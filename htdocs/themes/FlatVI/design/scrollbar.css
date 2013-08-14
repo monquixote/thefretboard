@@ -1,0 +1,82 @@
+@charset "utf-8";
+/* Scrollbar Hack */
+@media (min-width: 1921px)  {
+	  #Frame {
+	  	position: absolute;
+	  	width: 100%;
+	  	margin: auto;
+
+	  }
+}
+@media (min-width: 1920px)  {
+	  #Frame {
+	  	position: absolute;
+	  	width: 1918px;
+	  	margin: auto;
+
+	  }
+}
+@media (max-width: 1680px) and (min-width: 1601px)  {
+	  #Frame {
+	  	position: absolute;
+	  	width: 1678px;
+	  	margin: auto;
+
+	  }
+}
+@media (max-width: 1600px) and (min-width: 1441px)  {
+	  #Frame {
+	  	position: absolute;
+	  	width: 1589px;
+	  	margin: auto;
+
+	  }
+}
+@media (max-width: 1440px and (min-width: 1367px))  {
+	  #Frame {
+	  	position: absolute;
+	  	width: 1429px;
+	  	margin: auto;
+
+	  }
+}
+@media (max-width: 1366px) and (min-width: 1365px)  {
+	  #Frame {
+	  	position: absolute;
+	  	width: 1355px;
+	  	margin: auto;
+
+	  }
+}
+@media (max-width: 1360px) and (min-width: 1281px)  {
+	  #Frame {
+	  	position: absolute;
+	  	width: 1349px;
+	  	margin: auto;
+
+	  }
+}
+@media (max-width: 1280px) and (min-width: 1153px)  {
+	  #Frame {
+	  	position: absolute;
+	  	width: 1269px;
+	  	margin: auto;
+
+	  }
+}
+@media (max-width: 1152px) and (min-width: 1025px)  {
+	  #Frame {
+	  	position: absolute;
+	  	width: 1141px;
+	  	margin: auto;
+
+	  }
+}
+@media (max-width: 1024px)  {
+	  #Frame {
+	  	position: absolute;
+	  	width: 1013px;
+	  	margin: auto;
+
+	  }
+}

@@ -1,0 +1,146 @@
+/*
+    Document   : sphinxsearchresult
+    Created on : Apr 8, 2012, 2:25:02 AM
+    Author     : Justin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+/* Classic searchd
+ - This mirrors the search results as shown on vanillaforums.org/search
+
+*/
+#SphinxResults .ProfilePhotoSmall{
+    vertical-align: bottom; /* Align with the rest of the META text */
+}
+#SphinxResults .MItem {
+    margin-left: 8px;
+    margin-right: 8px;
+    white-space: nowrap;
+}
+#SphinxResults .MItem:first-child {
+    margin-left: 0;
+}
+#SphinxResults .Message {
+    font-size: 100%;
+    line-height: 140%;
+    margin-top: 5px;
+    word-wrap: break-word;
+}
+#SphinxResults .DataList .Excerpt {
+    margin: 5px 0;
+}
+
+/* End Classic Search */
+
+/* For the side panel modules  -overrides stye.css */
+.Box .DataList .Item{
+    border: none; /* no border for these list items */
+    position: inherit; /* or else errors in tooltip */
+    padding: 0px;
+}
+.Box .DataList .Title a{
+    font-size: 100%;
+}
+/* End side box */
+
+/** For the Table previe of advanced search **/
+.SphinxSearch .Alt{
+    background-color: #E3F4FF;
+}
+.SphinxSearch  table{
+    border-spacing: 2px;
+    border-collapse: collapse; /* so to add row spacing */
+}
+.SphinxSearch  td{
+    padding-left: 4px;
+    padding-top: 7px;
+    border: 1px solid white;
+}
+.SphinxSearch  table{
+    table-layout: fixed;
+    width: 100%; /* stretch for full effect */
+}
+
+/* End Table */
+
+
+
+/* General Search Result Info stuff */
+.SphinxSearch{ /* for all function */
+    clear: both;
+    margin-top: 5px;
+}
+#MoreOptions{
+/*    height: 115px;*/
+    position: relative;
+    width: 100%;
+    padding: 0px 2px;
+}
+
+/** Added this for sphinxLite "more/less options" button grid to play nice **/
+.SphinxSearch li{
+    display: block;
+}
+
+#UserInput{
+    width: 95%;
+}
+
+.SphinxSearch #OrderBy td{
+}
+
+#SphinxResults #Options {
+    float: right;
+    font-size: smaller;
+}
+#MoreOptions dt{
+    color: #797979;
+    font: bold 15px/18px Arial;
+}
+#SphinxResults #NavBar{
+    clear: both;
+}
+#SphinxResults #SearchQuery{
+    font-size: 22px;
+    color: #646464;
+}
+#SphinxResults #SearchDetail{
+    font-size: 18px;
+    color: #555555;
+}
+#SphinxResults  #TitleBar{
+    margin-left: 9px;
+}
+#SphinxResults  #SearchAgain,
+#SphinxResults .NoResults{
+    margin-left: 9px;
+    float: left;
+}
+#SphinxResults .NoResults{
+    clear: both;
+}
+#SphinxResults #Time{
+    float: left;
+    color: #555555;
+    margin-left: 5px;
+}
+/* End Search Info stuff */
+
+
+
+
+
+
+/* Excerpts */
+.Message .SphinxExcerpts{
+    font-weight: bold;
+    background-color: yellow;
+}
+.Title .SphinxExcerpts{
+    font-weight: bold;
+    font-size: 16px;
+    background-color: yellow;
+}
+/* end excerpts */

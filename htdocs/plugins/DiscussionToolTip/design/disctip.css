@@ -1,0 +1,10 @@
+ul.Discussions li a img.Dtooltip {
+padding-left: 5px;
+float: left;
+height: 25px;
+width: 35px;
+}
+ 
+.Discussion.ItemContent {
+padding-left: 45px;
+}

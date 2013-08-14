@@ -1,0 +1,42 @@
+
+.PeregrineBadgesSmall {
+padding: 3px;
+width: 32px;
+height: 32px;
+}
+
+.pbcell {
+padding-left:20px;
+width: 100px;
+height:50px;
+}
+
+.pbheading {
+  padding: 5px 15px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.pbtitle {
+  padding: 30px 0px 15px 400px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.pbmessage {
+  padding: 30px 0px 15px 100px;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.pbimagespan img{
+     height: 40px;
+     width:  40px;
+     margin-top: 10px;
+     padding-right:20px;
+     }
+     
+.pbrow tr {
+    max-width:100px;
+}
+

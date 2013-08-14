@@ -1,0 +1,289 @@
+
+div .ProfilePReactionBox {
+padding:10px;
+}
+
+.PRTitle{
+font-size: 18px;
+padding:20px;
+}
+
+
+.ProfilePRTable {
+margin-left: 20px;
+}
+ .ProfilePRGraphTable {
+ border-spacing: 2px;
+}
+
+.ProfilePRTable td {
+color:blue;
+text-align:center;
+font-size: 30px;
+}
+
+
+.ProfilePRTable th {
+color:green;
+text-align:center;
+padding: 10px;
+font-size: 26px;
+}
+
+
+.PeregrineTotReaction {
+ background-color: green;
+ color:white;
+ font-size: 70%;
+ padding: 5px;
+ margin-left:10px;
+ border-radius:10px;
+}
+
+
+
+/* discussion page */
+
+.ReactionClass {
+background-color: #ded4d4;
+color: red;
+padding-top: 10px;
+margin-top:20px;
+height: 35px; !important
+}
+
+
+.Reactions {
+margin-top: 5px;
+}
+
+
+
+
+.ReactionClass .React.funny {
+background:url(designfunny.png) no-repeat;
+}
+
+
+.ReactionClass .React.funny:before {
+background:url(design/funny.png) no-repeat; 
+
+}
+.ReactionClass .React.funny:hover:before {
+background: #FF0;
+}
+.ReactionClass .React.wow:before {
+background:url(design/wow.png) no-repeat;
+}
+.ReactionClass .React.wow:hover:before {
+background: #F0F;
+}
+.ReactionClass .React.scholarly:before {
+background:url(design/scholarly.png) no-repeat;
+}
+.ReactionClass .React.scholarly:hover:before {
+background: #0F0;
+}
+.ReactionClass .React.artistic:before {
+background:url(design/artistic.png) no-repeat;
+}
+.ReactionClass .React.artistic:hover:before {
+background: #0FF;
+}
+
+/* mine */
+  
+.HotButton {
+   background: #ee3300;
+   background-image: linear-gradient(bottom, rgb(170,17,0) 25%, rgb(204,51,0) 63%);
+   background-image: -o-linear-gradient(bottom, rgb(170,17,0) 25%, rgb(204,51,0) 63%);
+   background-image: -moz-linear-gradient(bottom, rgb(170,17,0) 25%, rgb(204,51,0) 63%);
+   background-image: -webkit-linear-gradient(bottom, rgb(170,17,0) 25%, rgb(204,51,0) 63%);
+   background-image: -ms-linear-gradient(bottom, rgb(170,17,0) 25%, rgb(204,51,0) 63%);
+   background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.25, rgb(170,17,0)),
+      color-stop(0.63, rgb(204,51,0))
+   );
+   text-shadow: 0 -1px 0 #880000;
+   box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 2px rgba(0,0,0,0.3);
+   -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 2px rgba(0,0,0,0.3);
+   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 2px rgba(0,0,0,0.3);
+   border-color: #763407;
+   color: #fff;
+   padding:5px;
+}
+
+HotButton.Handle,
+#Content input.Button:hover,
+#Content input.Button:focus,
+#Content input.Button:active,
+.Button:hover,
+.Button:focus,
+.Button:active {
+   color: #fff;
+   border-color: #6f0b00;
+}
+HotButton.Handle,
+#Content input.Button:focus,
+#Content input.Button:active,
+.Button:focus,
+.Button:active {
+   background: #aa1100;
+}
+
+
+
+
+
+.ReactantWrap {
+   padding: 3px;
+   padding-left: 5px;
+   min-width: 55px;
+}
+
+span.afterperegrinereaction {
+padding-right:20px;
+}
+
+
+span.ReactionCount  {
+font-size: 80%;
+color: white;
+background-color: gray;
+padding: 0px 5px ;
+margin: 0px 4px 0px 20px;
+border-radius:50px;
+}
+
+span.MyReactClick {
+font-size: 12px;
+}
+
+
+
+
+.RImage-1, .RImage-2,.RImage-3, .RImage-4  { 
+background-size: 20px;
+padding-right: 14px;
+position:relative; 
+bottom: 11px;
+right: 18px;
+z-index: 300;
+border-radius:50px;
+border:1px solid white;
+
+}
+
+.RImage-1 {
+background:url(OverlayReaction-1.png) no-repeat; 
+background-color: #ACC;
+position:relative;
+}
+
+
+
+.RImage-2 {
+background:url(OverlayReaction-2.png) no-repeat; 
+background-color: #ACC;
+background-position: -1px -1px;
+}
+
+.RImage-3 {
+background:url(OverlayReaction-3.png) no-repeat; 
+background-color: #ACC;
+}
+
+.RImage-4 {
+background:url(OverlayReaction-4.png) no-repeat; 
+background-color: #ACC;
+background-size: 75%;
+}
+
+.RImageName-1,  .RImageName-2,.RImageName-3,.RImageName-4{
+    background-color: #ACC;
+    background-repeat: no-repeat;
+    background-size: 15px; 
+    border-radius:50px;
+    bottom: 14px;
+    padding: 0px 10px 2px  2px;
+    position: relative;
+    right: 0px;
+    z-index: 300;
+}
+.RImageName-1 {
+    background-image: url("OverlayReaction-1.png");
+}
+
+.RImageName-2 {
+    background-image: url("OverlayReaction-2.png");
+}
+
+.RImageName-3 {
+    background-image: url("OverlayReaction-3.png");  
+}
+
+.RImageName-4 {
+    background-image: url("OverlayReaction-4.png");
+}
+
+.Clickedx {
+background-color:green;
+color:white;
+}
+
+.ProfilePhotoCircle {
+    height: 30px;
+    vertical-align: bottom;
+    width: 30px;
+  /*  border-radius: 50px; */
+}
+
+
+div.xxxxxSideMenu {
+display:none;
+}
+
+
+.plbanchor {
+text-align: left;
+height: 2em;
+font-size: 12px;
+}
+
+
+#Panel .FilterMenu .Aside,
+    .PanelInfo .Aside {
+    float: right;
+    }
+    
+.plbanchor .Count { 
+     float: right; 
+     font-size: 10px;
+      padding: 0px 5px;
+     }
+
+.ProfilePhotoLeader {
+    margin-right:5px; 
+    height: 24px;
+    width: 24px;
+}
+
+
+
+.Box h4#WeekReactTitle {
+ font-size: 95%;
+
+}
+
+.reactbar {
+background-color: blue;
+margin-right: 5px;
+}
+
+
+
+
+
