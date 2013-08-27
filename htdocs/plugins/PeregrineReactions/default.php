@@ -53,7 +53,7 @@ class PeregrineReactions extends Gdn_Plugin {
 
     public function DiscussionController_AuthorInfo_Handler($Sender) {
     $AuthorInfo = $Sender->EventArguments['Author'];
-    $totalreactionpoints = $AuthorInfo->PeregrineReactOne + $AuthorInfo->PeregrineReactTwo + $AuthorInfo->PeregrineReactThree - $AuthorInfo->PeregrineReactFour;
+    $totalreactionpoints = $AuthorInfo->PeregrineReactOne + $AuthorInfo->PeregrineReactTwo + $AuthorInfo->PeregrineReactThree;
     echo sprintf(T('Frets: %1s'), $totalreactionpoints);
     }
 

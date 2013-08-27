@@ -129,6 +129,8 @@ public function TimeframePeregrineReactions($MaxRecords, $NumDays) {
                 ->From('PeregrineReactions pr')
                 ->Join('User u', 'pr.UserID = u.UserID')
                 ->Where('pr.DateInserted >=', Gdn_Format::ToDateTime(strtotime("-" . $NumDays . " days")))
+                //Monquixote tweak - removes facepalms from leaderboard
+                ->Where('pr.reactionType <>','4')
                 ->GroupBy('pr.UserID')
                 ->OrderBy('CountUserID', 'desc')
                 ->Limit($MaxRecords) 
