@@ -114,7 +114,7 @@ class cleditorPlugin extends Gdn_Plugin {
 		// Add the CLEditor to the form
 		$Options = array('ie' => 'gt IE 6', 'notie' => TRUE); // Exclude IE6
 		$Sender->RemoveJsFile('jquery.autogrow.js');
-		$Sender->AddJsFile('jquery.cleditor'.(Debug() ? '' : '.min').'.js', 'plugins/cleditor', $Options);
+		$Sender->AddJsFile('jquery.cleditor'.(Debug() ? '' : '').'.js', 'plugins/cleditor', $Options);
       
       $CssInfo = AssetModel::CssPath('cleditor.css', 'plugins/cleditor');
       
