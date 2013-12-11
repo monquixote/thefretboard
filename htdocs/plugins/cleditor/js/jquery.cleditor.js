@@ -881,7 +881,7 @@ jQuery(document).ready(function($) {
       ((options.docCSSFile === '') ? '' : '<head><link rel="stylesheet" type="text/css" href="' + options.docCSSFile + '" /></head>') +
       '<meta http-equiv="X-UA-Compatible" content="IE=edge" />' + 
       '</head>' + 
-      '<body style="' + options.bodyStyle + '"></body></html>'
+      '<body class="editorbody" style="' + options.bodyStyle + '"></body></html>' //Monq tweak so can be selected
     );
     doc.close();
 
@@ -1164,6 +1164,8 @@ jQuery(document).ready(function($) {
     // Prevent script injection attacks by html encoding script tags
     html = html.replace(/<(?=\/?script)/ig, "&lt;");
 
+    
+
     // Update the iframe checksum
     if (options.updateTextArea)
       editor.frameChecksum = checksum(html);
@@ -1183,6 +1185,12 @@ jQuery(document).ready(function($) {
       options = editor.options,
       updateTextAreaCallback = options.updateTextArea,
       $area = editor.$area;
+
+    //Monquixote Quote Fix 10/12/2013
+    if(html.slice(-6) == "quote>") {
+      html += "<br>";
+      $(editor.doc.body).html(html);
+    }
 
     // Check for iframe change to avoid unnecessary firing
     // of potentially heavy updateTextArea callbacks.
