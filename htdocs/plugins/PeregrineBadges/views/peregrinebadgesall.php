@@ -1,9 +1,9 @@
 <?php if(!defined('APPLICATION')) die();
 
-// let the spaghetti western begin 
+// let the spaghetti western begin
 
 
-// let the spaghetti western begin 
+// let the spaghetti western begin
 
 $qs = $_SERVER['QUERY_STRING'];
 preg_match('|badgetype=(.*)|', $qs, $matches);
@@ -12,7 +12,7 @@ $ThankfulBadge = $LikedBadge = $SpecialBadge = $CommentBadge = $AnniversaryBadge
 $PRBadgeOne = $PRBadgeTwo = $PRBadgeThree = $PRBadgeFour = "";
 switch ($rawto) {
 
-    //Anniversary not implemented nor is Charter, or Specials.
+    // Anniversary not implemented nor is Charter, or Specials.
 
     case 'CharterBadge':
         $whereto = "CharterBadge";
@@ -71,25 +71,25 @@ switch ($rawto) {
      case 'SpecialBadgeA':
         $whereto = "SpecialBadgeA";
         $SpecialBadge = "Y";
-        break;  
+        break;
     case 'SpecialBadgeB':
         $whereto = "SpecialBadgeB";
         $SpecialBadge = "Y";
-        break; 
+        break;
     case 'SpecialBadgeC':
         $whereto = "SpecialBadgeC";
         $SpecialBadge = "Y";
-        break;  
+        break;
     case 'SpecialBadgeD':
         $whereto = "SpecialBadgeD";
         $SpecialBadge = "Y";
-        break;   
+        break;
      case 'SpecialBadgeE':
         $whereto = "SpecialBadgeE";
         $SpecialBadge = "Y";
-        break;  
-   
- 
+        break;
+
+
     default:
         $whereto = "CommentBadge";
         $CommentBadge = $BadgeName = T("Comments");
@@ -137,8 +137,6 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
 
     $PBArray = PeregrineBadgesModel::GetRecipientsBadge($whereto, $BadgeNumber, $limit);
 
-   
-   
     echo '<h1 class="pbheading">';
     echo T('Badge Summary');
     echo "</h1>";
@@ -147,18 +145,15 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
     $UserName = $Session = Gdn::Session()->User->Name;
     $maxcount = 0;
     $BadgeList = Array(0, 1, 10, 100, 500, 1000, 2500, 5000, 10000);
-  
-    
+
     for ($x = 0; $x < count($PBArray); $x++) {
 
         $index = $PBArray[$x][$whereto];
- 
+
         if ($maxcount < $PBArray[$x][$whereto]) {
             $maxcount = $PBArray[$x][$whereto];
         }
     }
-
-
 
     $index = $UserBadges[0][$whereto];
 
@@ -171,9 +166,9 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
         $NewBadgeName = $SingBadgeName;
 
     if ($BadgeName == $CommentBadge) {
-      
+
        $message =  T("Comment Badges are awarded to members who participate in discussions");
-      
+
         if ($index == 1)
             $message = T("Nice to see that you are getting involved!");
         if ($index == 2)
@@ -182,9 +177,9 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
             $message = T("Nice to see you are staying with us and are contributing!");
     }
     if ($BadgeName == $LikedBadge) {
-        
+
         $message =  T("Liked Badges are awarded to members who have been Liked by other members");
-       
+
         if ($index == 1)
             $message = T("First Like: You received your first like! It can be the beginning of something beautiful!");
         if ($index == 2)
@@ -193,9 +188,9 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
             $message = T("Your posts are liked more and more - thanks for contributing awesome stuff!");
     }
     if ($BadgeName == $ThankfulBadge) {
-       
+
         $message =  T("ThankfulBadges are awarded to members who have been thanked by other members");
-       
+
         if ($index == 1)
             $message = T("First Thanks: You received your first thanks! It can be the beginning of something beautiful!");
         if ($index == 2)
@@ -203,11 +198,11 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
         if ($index > 2)
             $message = T("You are receiving more and more thanks - thank you for contributing awesome stuff!");
     }
-   
+
      if ($BadgeName == $PRBadgeOne) {
-       
+
         $message =  T("Peregrine Reactions Badge Type One are awarded to members who have been ... by other members");
-       
+
         if ($index == 1)
             $message = T("First ReactionOne - You have ...");
         if ($index == 2)
@@ -215,12 +210,11 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
         if ($index > 2)
             $message = T("You are receiving 100 or more REACTONE");
     }
-    
-    
+
      if ($BadgeName == $PRBadgeTwo) {
-       
+
         $message =  T("Peregrine Reactions Badge Type Two are awarded to members who have been ... by other members");
-       
+
         if ($index == 1)
             $message = T("First ReactionTwo - You have ...");
         if ($index == 2)
@@ -228,13 +222,11 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
         if ($index > 2)
             $message = T("You are receiving 100 or more REACTTWO");
     }
-    
-     
-    
+
      if ($BadgeName == $PRBadgeThree) {
-       
+
         $message =  T("Peregrine Reactions Badge Type Three are awarded to members who have been ... by other members");
-       
+
         if ($index == 1)
             $message = T("First ReactionThree - You have ...");
         if ($index == 2)
@@ -242,12 +234,12 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
         if ($index > 2)
             $message = T("You are receiving 100 or more REACTTHREE");
     }
-    
-    
+
+
       if ($BadgeName == $PRBadgeFour) {
-       
+
         $message =  T("Peregrine Reactions Badge Type Four are awarded to members who have been ... by other members");
-       
+
         if ($index == 1)
             $message = T("First ReactionFour - You have ...");
         if ($index == 2)
@@ -255,18 +247,13 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
         if ($index > 2)
             $message = T("You are receiving 100 or more REACTFOUR");
     }
-    
-    
-    
-    
-    
-    
-    
+
+
     if ($BadgeName == $AnniversaryBadge) {
         $NewBadgeName = $SingBadgeName;
         $BLevel = $index;
               $message =  T("Anniversary Badges are awarded every year");
-        
+
         if ($index == 1) {
             $message = T("Congratulations! Nice to see you like it here!");
             $BLevel = T("First");
@@ -298,18 +285,17 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
     }
 
     echo '<p class="pbmessage" >' . $message . "</p>";
-    
-    
+
     $AllBadgeArray = array("Comments",
     "Thankful",
-    "Liked",             
+    "Liked",
     $PRBadgeOne,
     $PRBadgeTwo,
     $PRBadgeThree,
     $PRBadgeFour,
     );
-   
-   
+
+
     if (InArrayI($BadgeName, $AllBadgeArray))  {
         $BadgeList = Array(0, 1, 10, 100, 500, 1000, 2500, 5000, 10000);
 
@@ -317,19 +303,15 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
         if ($maxcount < 1)
             $maxcount = 1;
         for ($BadgeNo = 1; $BadgeNo <= $maxcount; $BadgeNo++) {
-            echo '<p class="pbtitle">';
+            echo '<div class="pbtitle">';
             $NewBadgeName = $BadgeName;
             if ($BadgeNo < 2)
                 $NewBadgeName = $SingBadgeName;
 
-
             echo T("Recipients of the esteemed $BadgeList[$BadgeNo] $NewBadgeName Badge");
 
-
-            echo "</p>";
-            echo "<table>";
-            echo '<tr class= "pbrow">';
-            echo '<span class="pbspan">';
+            echo "</div>";
+            echo '<div class="pbtable">';
             $gotone = 0;
             for ($x = 0; $x <= count($PBArray)-1; $x++) {
                 $UID = $PBArray[$x]['UserID'];
@@ -349,29 +331,21 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
                             $gotone = 1;
                     }
 
-
-
                     $Href = "/profile/$Name/$UID";
+                    echo '<div class="pbcell">';
 
-
-                    if ($x % 10 == 0)
-                        echo "</tr></tr>";
-                    echo '<td class= "pbcell">';
                     if ($photo) {
 
                         echo UserPhoto($User, array('LinkClass' => 'ProfilePhotoCategory', 'ImageClass' => 'ProfilePhotoSmall'));
-                        echo "<p> </p>";
+                        echo "<br />";
                         echo UserAnchor($User);
                     } else {
                         echo UserAnchor($User);
                     }
-                    echo "</td>";
+                    echo "</div>"; // TO BE REPLACED BY END DIV //
                 }
-                // echo '</li>';
             }
-            echo "</span>";
-            echo "</tr>";
-            echo "<table>";
+            echo "</div>"; // TO BE REPLACED BY END DIV //
             if ($gotone < 1)
                 echo T('No Awards Yet');
         }
@@ -381,7 +355,6 @@ if (($whereto <> "CharterBadge") && ($SpecialBadge <> "Y")) {
 function charterbadgedisplay($ImageBaseName) {
 // charter badge
 
-
     echo '<h1 class="pbheading">';
     echo T('Badge Summary');
     echo "</h1>";
@@ -389,7 +362,7 @@ function charterbadgedisplay($ImageBaseName) {
     $UserName = $Session = Gdn::Session()->User->Name;
         $message = T("Thanks for being here from the beginning");
         $Image = Img("plugins/PeregrineBadges/design/images/" . $ImageBaseName . ".png", array('alt' => 'Badge', 'class' => "PeregrineBadgesSmall"));
-    if (($User > 0) && ($User < 101)) { 
+    if (($User > 0) && ($User < 101)) {
         echo '<p class="pbheading" >' . '<span class= "pbimagespan">' . $Image . '</span>' . $UserName . ", " . T("You are a recipient of the esteemed Charter badge") . "</p>";
         echo '<p class="pbmessage" >' . $message . "</p>";
     }
@@ -398,8 +371,8 @@ function charterbadgedisplay($ImageBaseName) {
 }
 
 function specialbadgedisplayA() {
- 
- 
+
+
   $SpecialBadgeA = C('Plugins.PeregrineBadges.SpecialBadgeA') ;
      if($SpecialBadgeA) {
      $title = $SpecialBadgeA[0];
@@ -410,8 +383,8 @@ function specialbadgedisplayA() {
      $UserName = $Session = Gdn::Session()->User->Name;
      $message = T("You have received Special Badge A");
      $Image = Img("plugins/PeregrineBadges/design/images/" . "sba.png", array('alt' => 'Special Badge', 'title' => sprintf(T('%s'), $title) ,'class' => "PeregrineBadgesSmall"));
-   
-   
+
+
     for ($x=1; $x < count( $SpecialBadgeA);$x++) {
         $id =  $SpecialBadgeA[$x];
         if ($id == $User) {
@@ -419,17 +392,16 @@ function specialbadgedisplayA() {
         echo '<p class="pbmessage" >' . $message . "</p>";
         }
     }
-    
-     echo '<p class="pbmessage" >' . T("The $title badge $Image is awarded to special A members of the forum") . "</p>";
 
-   
+	echo '<p class="pbmessage" >' . T("The $title badge $Image is awarded to special A members of the forum") . "</p>";
+
   }
 
 }
 
 function specialbadgedisplayB() {
- 
- 
+
+
   $SpecialBadgeB = C('Plugins.PeregrineBadges.SpecialBadgeB') ;
      if($SpecialBadgeB) {
      $title = $SpecialBadgeB[0];
@@ -440,8 +412,8 @@ function specialbadgedisplayB() {
      $UserName = $Session = Gdn::Session()->User->Name;
      $message = T("You have received Special Badge B");
      $Image = Img("plugins/PeregrineBadges/design/images/" . "sbb.png", array('alt' => 'Special Badge', 'title' => sprintf(T('%s'), $title) ,'class' => "PeregrineBadgesSmall"));
-   
-   
+
+
     for ($x=1; $x < count( $SpecialBadgeB);$x++) {
         $id =  $SpecialBadgeB[$x];
         if ($id == $User) {
@@ -449,17 +421,15 @@ function specialbadgedisplayB() {
         echo '<p class="pbmessage" >' . $message . "</p>";
         }
     }
-    
+
      echo '<p class="pbmessage" >' . T("The $title badge $Image is awarded to special B members of the forum") . "</p>";
 
-   
   }
 
 }
 
 function specialbadgedisplayC() {
- 
- 
+
   $SpecialBadgeC = C('Plugins.PeregrineBadges.SpecialBadgeC') ;
      if($SpecialBadgeC) {
      $title = $SpecialBadgeC[0];
@@ -470,8 +440,7 @@ function specialbadgedisplayC() {
      $UserName = $Session = Gdn::Session()->User->Name;
      $message = T("You have received Special Badge C");
      $Image = Img("plugins/PeregrineBadges/design/images/" . "sbc.png", array('alt' => 'Special Badge', 'title' => sprintf(T('%s'), $title) ,'class' => "PeregrineBadgesSmall"));
-   
-   
+
     for ($x=1; $x < count( $SpecialBadgeC);$x++) {
         $id =  $SpecialBadgeC[$x];
         if ($id == $User) {
@@ -479,18 +448,16 @@ function specialbadgedisplayC() {
         echo '<p class="pbmessage" >' . $message . "</p>";
         }
     }
-    
+
      echo '<p class="pbmessage" >' . T("The $title badge $Image is awarded to special C members of the forum") . "</p>";
 
-   
   }
 
 }
 
 
 function specialbadgedisplayD() {
- 
- 
+
   $SpecialBadgeD = C('Plugins.PeregrineBadges.SpecialBadgeD') ;
      if($SpecialBadgeD) {
      $title = $SpecialBadgeD[0];
@@ -501,8 +468,8 @@ function specialbadgedisplayD() {
      $UserName = $Session = Gdn::Session()->User->Name;
      $message = T("You have received Special Badge D");
      $Image = Img("plugins/PeregrineBadges/design/images/" . "sbd.png", array('alt' => 'Special Badge', 'title' => sprintf(T('%s'), $title) ,'class' => "PeregrineBadgesSmall"));
-   
-   
+
+
     for ($x=1; $x < count( $SpecialBadgeD);$x++) {
         $id =  $SpecialBadgeD[$x];
         if ($id == $User) {
@@ -510,17 +477,15 @@ function specialbadgedisplayD() {
         echo '<p class="pbmessage" >' . $message . "</p>";
         }
     }
-    
+
      echo '<p class="pbmessage" >' . T("The $title badge $Image is awarded to special D members of the forum") . "</p>";
 
-   
   }
 
 }
 
 function specialbadgedisplayE() {
- 
- 
+
   $SpecialBadgeE = C('Plugins.PeregrineBadges.SpecialBadgeE') ;
      if($SpecialBadgeE) {
      $title = $SpecialBadgeE[0];
@@ -531,8 +496,8 @@ function specialbadgedisplayE() {
      $UserName = $Session = Gdn::Session()->User->Name;
      $message = T("You have received Special Badge E");
      $Image = Img("plugins/PeregrineBadges/design/images/" . "sbe.png", array('alt' => 'Special Badge', 'title' => sprintf(T('%s'), $title) ,'class' => "PeregrineBadgesSmall"));
-   
-   
+
+
     for ($x=1; $x < count( $SpecialBadgeE);$x++) {
         $id =  $SpecialBadgeE[$x];
         if ($id == $User) {
@@ -540,13 +505,9 @@ function specialbadgedisplayE() {
         echo '<p class="pbmessage" >' . $message . "</p>";
         }
     }
-    
+
      echo '<p class="pbmessage" >' . T("The $title badge $Image is awarded to special E members of the forum") . "</p>";
 
-   
   }
 
 }
-
-
-
