@@ -308,7 +308,7 @@ input[type="radio"]:checked {
 	cursor: default;
 }
 li.Category-classifieds {
-	background: #9B59B6 !important;
+	/* background: #61A419 !important; */
 }
 .FilterMenu li.Active,
 .FilterMenu li.Active:hover,
