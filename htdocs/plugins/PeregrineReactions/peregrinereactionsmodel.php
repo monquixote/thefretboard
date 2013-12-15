@@ -56,9 +56,10 @@ class PeregrineReactionsModel extends Gdn_Model {
             case "3":
                 $AddColumn = "PeregrineReactThree";
                 break;
-            case "4":
-                $AddColumn = "PeregrineReactFour";
-                break;
+# Removed by digitalscream 2013-12-15
+#            case "4":
+#                $AddColumn = "PeregrineReactFour";
+#                break;
         }
 
 
@@ -82,9 +83,10 @@ class PeregrineReactionsModel extends Gdn_Model {
             case "3":
                 $RemColumn = "PeregrineReactThree";
                 break;
-            case "4":
-                $RemColumn = "PeregrineReactFour";
-                break;
+# Removed by digitalscream 2013-12-15
+#            case "4":
+#                $RemColumn = "PeregrineReactFour";
+#                break;
         }
 
         if (!$Result) {
