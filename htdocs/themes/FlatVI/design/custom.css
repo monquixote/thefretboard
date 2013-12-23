@@ -204,7 +204,7 @@ input[type="radio"]:checked {
 /* Header and Navigation */
 #Head {
 	background: #373B3F /* #34495e */;
-	padding: 16px 3px 8px !important;
+	padding: 1em !important;
 	-webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
 	-moz-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
 	box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
@@ -236,6 +236,7 @@ input[type="radio"]:checked {
     border-radius: 6px;
     margin: 5px 0;
 }
+.BreadcrumbsWrapper a { vertical-align: middle; }
 .CrumbLabel a {
 	display: inline-block;
 	vertical-align: middle;
@@ -248,12 +249,12 @@ input[type="radio"]:checked {
 	font-size: 0px;
 }
 .Crumb:before {
-    color: #bdc3c7;
+    color: #BDC3C7;
     font-family: 'Flat-UI-Icons';
     content: "\e002";
     display: inline-block;
     font-size: 9.799999999999999px;
-    margin: -4px 9px 0 13px;
+    margin: -8px 9px 0 13px;
     vertical-align: middle;
     -webkit-font-smoothing: antialiased;
 }
@@ -289,7 +290,7 @@ input[type="radio"]:checked {
 }
 #Panel .FilterMenu li {
 	font-size: 13.994px;
-	font-weight: 650;
+	font-weight: bold;
 }
 #Panel .FilterMenu li,
 .PanelInfo li,
@@ -300,10 +301,13 @@ input[type="radio"]:checked {
 }
 .PanelInfo .Heading, .PanelInfo .Heading:hover {
 	margin: 0.5em 0 0.3em 0;
-	background: #999DA2 !important;
+	background: #999DA2;
 	color: #FFF;
 	border-radius: 0px !important;
 	cursor: default;
+}
+li.Category-classifieds {
+	/* background: #61A419 !important; */
 }
 .FilterMenu li.Active,
 .FilterMenu li.Active:hover,
@@ -510,8 +514,8 @@ div.token-input-dropdown ul li.token-input-dropdown-item {
 	background-color: #5dade2;
 }
 
-
 .HasNew {
+	display: inline-block;
 	font-weight: 600;
 	padding: 2px 5px 2.5px;
 	-webkit-border-radius: 4px;
@@ -776,6 +780,8 @@ h1.H:before {
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
 .TopRow { background: transparent; }
+#Head .Row { margin: 0 !important; }
+#Head .TopRow { padding: 0; width: 100%; box-shadow: none !important; }
 .BottomRow {
 	padding: 1em;
 	background: transparent;
@@ -822,8 +828,8 @@ h1.H:before {
 	padding: 0.5em 1em !important;
 }
 tbody td.BigCount {
-	font-family: arial;
 	padding: 0.7em 0.3em 0;
+	font-family: arial; font-size: 1em;
 }
 /*
 .CategoryTable.DataTable .CategoryName {
@@ -887,8 +893,8 @@ tbody td.BigCount {
 .Item-Body { padding: 0em 1em 0.5em !important; }
 .Message { margin-top: 0.5em !important; }
 .UserSignature {
-	margin-top: 1em; padding-top: 1em !important;
-	font-size: 0.8em !important;
+	margin-top: 1em; padding-top: 0.5em !important;
+	font-size: 0.8em !important; line-height: 1.3;
 	border-top: 1px solid #D8DCE0 !important;
 }
 
@@ -910,7 +916,7 @@ tbody td.BigCount {
 	border-top: 1px solid #D8DCE0 !important;
 	color: #CDE;
 }
-.Comment span.Bullet {
+.Reactions span.Bullet {
   display: none;
 }
 .Comment .Reactions span.ReactFacebook, .Comment .Reactions span.ReactTwitter {
@@ -934,6 +940,15 @@ tbody td.BigCount {
 /*
   end digitalscream changes 2013-08-02
 */
+
+/*digitalscream change 2013-09-03*/
+
+span.React-4 {
+  display: none;
+}
+
+/*end digitalscream change 2013-09-03*/
+
 .ReactionClass {
 	padding: 0.5em !important;
 	background-color: #F9F9F9; color: red;
@@ -963,10 +978,16 @@ div.pbcell {
 }
 
 /* IN THIS DISCUSSION / WHOSONLINE */
-#InThisDiscussion ul.PanelInfo, #WhosOnline ul.PanelInfo {
-	max-height: 190px; overflow-y: auto;
+div#InThisDiscussion { /* ddlooping (22-12-2013) */
+	height: auto;
+	max-height: 240px; /* change to taste */
+	overflow: auto;
 }
-
+div#WhosOnline { /* ddlooping (22-12-2013) */
+	height: auto;
+	max-height: 240px; /* change to taste */
+	overflow: auto;
+}
 #InThisDiscussion .PanelInfo li, #WhosOnline .PanelInfo li  {
 	padding: 0.3em 0.8em !important;
 	font-size: 0.9em;
@@ -978,23 +999,42 @@ div.pbcell {
 
 /* MISCELANEOUS */
 .clear { clear: both; }
-.theFB, .theFB2 { /* :) */
-	padding: 0px 0.3em;
-	width: auto;
+.theFB { /* :) */
 	background-color: #3498DB; color: #FFFFFF;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
 	border-radius: 4px;
 }
-.theFB2 { background-color: #9B59B6; }
-
 .DataList .Excerpt {
 	font-size: 100% !important;
 }
+.DataList a.Delete {
+	font-size: 1.6em;
+}
+
 div.topBottomArrows { font-size: 0.8em; float: right; margin-top: 0.2em; padding: 0.5em 0.7em; }
 
-/* SMILEYS (never know how to spell it :D ) */
+/* SMILEYS */
 .EmotifyDropdown, .Emoticon {
 	width: 24px !important; height: 24px !important;
 	vertical-align: middle !important;
+}
+.EmoticonBox:hover {
+	margin: 0 !important;
+	-webkit-box-shadow: 0px 0px 7px #000;
+	-moz-box-shadow: 0px 0px 7px #000;
+	box-shadow: 0px 0px 7px #000;
+	z-index: 10;
+}
+
+/* SPHINX Search (ddlooping / 22-12-2013) */
+.SphinxSearch {
+	clear: none !important;
+}
+#SphinxResults #NavBar {
+	clear: none !important;
+}
+#MoreOptions {
+	margin: 1em 0 !important; padding: 1em !important; width: auto !important;
+	border: 2px solid #BDC3C7; border-radius: 6px;
 }
