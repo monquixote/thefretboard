@@ -35,7 +35,10 @@ src; http://stackoverflow.com/questions/5683364/how-to-make-pure-css-floating-to
  - This mirrors the search results as shown on vanillaforums.org/search
 
 */
-#SphinxResults .ProfilePhotoSmall{
+#SphinxResults {
+  position: relative;
+}
+ .ProfilePhotoSmall{
     vertical-align: bottom; /* Align with the rest of the META text */
 }
 #SphinxResults .MItem {
@@ -167,12 +170,15 @@ src; http://stackoverflow.com/questions/5683364/how-to-make-pure-css-floating-to
     height: 115px;
     position: relative;
     width: 100%;
-    padding: 0px 2px;
+    padding: 0px 2px 55px 2px !important;
 }
 
 #SphinxResults #Options {
-    float: right;
     font-size: smaller;
+    top: -61px !important;
+    right: 400px;
+    position: absolute;
+    height: 40px;
 }
 #MoreOptions dt{
     color: #797979;
@@ -190,7 +196,8 @@ src; http://stackoverflow.com/questions/5683364/how-to-make-pure-css-floating-to
     color: #555555;
 }
 #SphinxResults  #TitleBar{
-    margin-left: 9px;
+    margin: 20px 9px 20px 9px;
+    
 }
 #SphinxResults  #SearchAgain,
 #SphinxResults .NoResults{
@@ -205,12 +212,17 @@ src; http://stackoverflow.com/questions/5683364/how-to-make-pure-css-floating-to
     color: #555555;
     margin-left: 5px;
 }
+
+input#Form_Search.InputBox {
+  width: 300px;
+}
+input#Form_Search1.Button {
+  position: relative;
+  top: -1px;
+  left: 10px;
+  height: 40px;
+}
 /* End Search Info stuff */
-
-
-
-
-
 
 
 /* sleek layout*/
