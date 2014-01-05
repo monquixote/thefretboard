@@ -55,6 +55,10 @@ src; http://stackoverflow.com/questions/5683364/how-to-make-pure-css-floating-to
     margin-top: 5px;
     word-wrap: break-word;
 }
+#SphinxResults .DataList {
+  clear: both;
+}
+
 #SphinxResults .DataList .Excerpt {
     margin: 5px 0;
 }
