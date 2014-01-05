@@ -50,7 +50,8 @@ class WidgetRelatedDiscussion extends Widgets implements SplObserver {
     }
 
     public function AddQuery($Sender, $Options = FALSE) {
-        if ($Sender->ControllerName == 'discussioncontroller') {
+        // 2014-01-05 - digitalscream: added check to make sure a discussion was passed (conflicts with quotes plugin)
+        if ($Sender->ControllerName == 'discussioncontroller' && isset($Sender->Discussion)) {
             $this->SphinxClient->ResetFilters();
             $this->SphinxClient->ResetGroupBy();
             $this->SphinxClient->SetSortMode(SPH_SORT_RELEVANCE);
