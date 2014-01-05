@@ -87,9 +87,7 @@ div.Popup h4 { /* extend this to h4 */
     padding: 3px;
 }
 #SearchMenu{
-/*    margin-left: 80px;
-    width: 700px;*/
-    margin: auto;
+    width: 400px;
     float: right;
 }
 #SearchMenu dd, #SearchMenu dt{
