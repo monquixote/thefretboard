@@ -487,7 +487,12 @@ class VanillaHooks implements Gdn_IPlugin {
       $Args = Gdn::Request()->Post('Args');
       parse_str($Args, $Args);
       $ResolvedPath = trim(Gdn::Request()->Post('ResolvedPath'), '/');
-      $ResolvedArgs = @json_decode(Gdn::Request()->Post('ResolvedArgs'));
+      // Account for magic_quotes weirdness with worker MPM + FastCGI
+      if(get_magic_quotes_gpc() == 1) {
+        $ResolvedArgs = @json_decode(stripslashes(Gdn::Request()->Post('ResolvedArgs')));  
+      } else {
+        $ResolvedArgs = @json_decode(Gdn::Request()->Post('ResolvedArgs'));
+      }
       $DiscussionID = NULL;
       $DiscussionModel = new DiscussionModel();
       
