@@ -68,7 +68,7 @@
 			$elem = $(elem);
 			urlo = parseURL(url);
 		
-		if (url.indexOf('google.com/calendar/') > -1 ) {
+		if (url.indexOf('https://www.google.com/calendar/') == 0 ) {
 			return ReplaceGoogleCalendar(url,elem,$elem);
 		}
 		
