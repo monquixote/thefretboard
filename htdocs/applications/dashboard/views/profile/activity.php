@@ -1,11 +1,11 @@
 <?php if (!defined('APPLICATION')) exit();
 
-echo '<h2 class="H">'.T('Activity').'</h2>';
+echo '<h2 class="H">'.T('Activity (Visible to Everyone!)').'</h2>';
 
 $Session = Gdn::Session();
 if ($Session->IsValid() && CheckPermission('Garden.Profiles.Edit')) {
    $this->FireEvent('BeforeStatusForm');      
-   $ButtonText = $Session->UserID == $this->User->UserID ? 'Share' : 'Add Comment';
+   $ButtonText = $Session->UserID == $this->User->UserID ? 'Share' : 'Public Message';
    echo $this->Form->Open(array('action' => Url("/activity/post/{$this->User->UserID}?Target=".urlencode(UserUrl($this->User))), 'class' => 'Activity'));
    echo $this->Form->Errors();
    echo Wrap($this->Form->BodyBox('Comment'), 'div', array('class' => 'TextBoxWrapper'));

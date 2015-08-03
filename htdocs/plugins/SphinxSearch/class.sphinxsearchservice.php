@@ -73,6 +73,8 @@ class SphinxSearchService extends SphinxObservable {
     public function Status() {
         $SphinxSearchModel = new SphinxClient(); ///@todo fix this from getting new instance of sphinxclient
         $Status = $SphinxSearchModel->Status(); //will return an array of misc info if sphinx is running
+// digitalscream: commented this out temporarily to stop it updating the config file with every connection
+/*
         if ($Status) {
             parent::Update(SS_SUCCESS, 'Uptime', $Status[0][1]); //sphinx returns uptime in seconds
             parent::Update(SS_SUCCESS, 'SearchdConnections', $Status[1][1]);
@@ -81,6 +83,7 @@ class SphinxSearchService extends SphinxObservable {
         }
         $this->CheckSphinxRunning(); //update searchd status
         $this->ValidateInstall(); //validate the install
+*/
     }
 
     /**
