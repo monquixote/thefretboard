@@ -67,9 +67,13 @@
 		var url = elem.href,
 			$elem = $(elem);
 			urlo = parseURL(url);
-
+		
+		if (url.indexOf('https://www.google.com/calendar/') == 0 ) {
+			return ReplaceGoogleCalendar(url,elem,$elem);
+		}
+		
 		if (urlo.full != parseURL($elem.html()).full) return;
-
+		
 		if (urlo.file.match(/\.(jpg|jpeg|png|gif)/i))
 			return ReplaceImage(url, elem, $elem);
 
@@ -88,6 +92,7 @@
 			var match = urlo.file.match(/^([\d]{8})$/);
 			if (match) return ReplaceVimeo(match[1], elem, $elem);
 		}
+
 
 		if (urlo.host == 'pastebin.com') {
 			var match = urlo.file.match(/^([\w]{8})$/);
@@ -110,7 +115,8 @@
 		if (urlo.host == 'maps.google.co.uk') {
 			return ReplaceGoogleMap(url, elem, $elem);
 		}
-
+		
+	
 	}
 
 	function CommonSetting (newel, $elem, type) {
@@ -321,6 +327,11 @@
 		newel.prop('src', iframeSrc);
 		CommonSetting(newel, $elem, 'GoogleMap');
 		$elem.replaceWith(newel);
+	}
+	
+	function ReplaceGoogleCalendar (url,elem,$elem){
+		var newelem = '<iframe src="'+url+'" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>';
+		$elem.replaceWith(newelem);
 	}
 
 }(jQuery));
