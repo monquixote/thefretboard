@@ -1,0 +1,11 @@
+{
+  "name": "vanilla-wysihtml5",
+  "private": true,
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-uglify": "*",
+    "gulp-livereload": "*",
+    "gulp-util": "*"
+  }
+}

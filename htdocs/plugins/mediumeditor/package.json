@@ -1,0 +1,10 @@
+{
+  "name": "vanilla-mediumeditor",
+  "private": true,
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-uglify": "*",
+    "gulp-livereload": "*"
+  }
+}
