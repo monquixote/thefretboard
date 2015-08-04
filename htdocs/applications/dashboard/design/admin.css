@@ -1468,6 +1468,9 @@ div.Popup div.Legal {
 div.CurrentTheme img,
 div.BrowseThemes img {
 	border: 1px solid #777;
+  width: 150px;
+  height: auto;
+  max-height: 112px;
 }
 div.CurrentTheme h3,
 div.BrowseThemes h3 {
@@ -1487,7 +1490,8 @@ div.BrowseThemes h3 {
 .CurrentTheme h4 span {
 	padding-left: 10px;
 }
-div.Description {
+div.Description,
+div.Requirements {
 	padding: 0 20px 20px;
 }
 div.Options,
@@ -2390,6 +2394,14 @@ span.InformSprite.Dice { background-position: -442px -586px; }
    margin: -2px;
 	background: url('//vanillicon.com/sprites/sprites-14-sweetx-001F44.png') 0 0 no-repeat;
 	display: inline-block;
+}
+
+/* Hide extra News info in Dashboard feed */
+.List .FeedItem .tptn_counter {
+   display: none;
+}
+.List .FeedItem em p:nth-of-type(2) {
+   display: none;
 }
 
 /* 16px Sprites Black Transparent */

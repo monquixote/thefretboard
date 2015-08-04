@@ -202,7 +202,8 @@ function Gdn_Quotes() {
    }
    
    Gdn_Quotes.prototype.GetEditor = function() {
-      return this.Editors[this.Editors.length-1];
+      // return this.Editors[this.Editors.length-1];
+      return $('.BodyBox.TextBox');
    }
    
    Gdn_Quotes.prototype.Quote = function(ObjectID, QuoteLink) {
@@ -211,16 +212,16 @@ function Gdn_Quotes() {
       
       switch (this.InsertMode) {
          case 'cleditor':
-            var ScrollY = $(this.GetEditor().get(0).editor.$frame).offset().top - 100; // 100 provides buffer in viewport
+            var ScrollY = $(this.GetEditor().get(0).editor.$frame).offset().top + 100; // 100 provides buffer in viewport
          break;
          
          case 'default':
          default:
-            var ScrollY = this.GetEditor().offset().top - 100; // 100 provides buffer in viewport
+            var ScrollY = this.GetEditor().offset() + 200; // 100 provides buffer in viewport
          break;
       }
       
-      $('html,body').animate({scrollTop: ScrollY}, 800);
+      $('html,body').animate({scrollBottom: ScrollY}, 800);
    }
    
    Gdn_Quotes.prototype.GetQuoteData = function(ObjectID) {

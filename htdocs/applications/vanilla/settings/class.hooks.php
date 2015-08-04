@@ -429,7 +429,7 @@ class VanillaHooks implements Gdn_IPlugin {
       list($Offset, $Limit) = OffsetLimit($Page, Gdn::Config('Vanilla.Discussions.PerPage', 30));
       
       $DiscussionModel = new DiscussionModel();
-      $Discussions = $DiscussionModel->GetByUser($Sender->User->UserID, $Limit, $Offset);
+      $Discussions = $DiscussionModel->GetByUser($Sender->User->UserID, $Limit, $Offset, FALSE, Gdn::Session()->UserID);
       $CountDiscussions = $Offset + $DiscussionModel->LastDiscussionCount + 1;
       $Sender->DiscussionData = $Sender->SetData('Discussions', $Discussions);
       
@@ -487,12 +487,7 @@ class VanillaHooks implements Gdn_IPlugin {
       $Args = Gdn::Request()->Post('Args');
       parse_str($Args, $Args);
       $ResolvedPath = trim(Gdn::Request()->Post('ResolvedPath'), '/');
-      // Account for magic_quotes weirdness with worker MPM + FastCGI
-      if(get_magic_quotes_gpc() == 1) {
-        $ResolvedArgs = @json_decode(stripslashes(Gdn::Request()->Post('ResolvedArgs')));  
-      } else {
-        $ResolvedArgs = @json_decode(Gdn::Request()->Post('ResolvedArgs'));
-      }
+      $ResolvedArgs = @json_decode(Gdn::Request()->Post('ResolvedArgs'));
       $DiscussionID = NULL;
       $DiscussionModel = new DiscussionModel();
       

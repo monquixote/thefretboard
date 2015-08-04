@@ -258,6 +258,8 @@ function CssClass($Row, $InList = TRUE) {
    // Category list classes
    if (array_key_exists('UrlCode', $Row))
       $CssClass .= ' Category-'.Gdn_Format::AlphaNumeric($Row['UrlCode']);
+   if (GetValue('CssClass', $Row))
+      $CssClass .= ' Item-'.$Row['CssClass'];
 
    if (array_key_exists('Depth', $Row))
       $CssClass .= " Depth{$Row['Depth']} Depth-{$Row['Depth']}";
@@ -682,8 +684,8 @@ if (!function_exists('UserPhoto')) {
       $Name = GetValue('Name', $User);
       $Title = htmlspecialchars(GetValue('Title', $Options, $Name));
       
-      if ($FullUser['Banned']) {
-         $Photo = 'http://cdn.vanillaforums.com/images/banned_100.png';
+      if ($FullUser && $FullUser['Banned']) {
+         $Photo = C('Garden.BannedPhoto', 'http://cdn.vanillaforums.com/images/banned_large.png');;
          $Title .= ' ('.T('Banned').')';
       }
       
@@ -824,3 +826,41 @@ if (!function_exists('Sprite')) {
 		return '<span class="'.$Type.' '.$Name.'"></span>';
 	}
 }
+
+if (!function_exists('WriteReactions')):
+   function WriteReactions($Row) {
+      list($RecordType, $RecordID) = RecordType($Row);
+
+      Gdn::Controller()->EventArguments['RecordType'] = strtolower($RecordType);
+      Gdn::Controller()->EventArguments['RecordID'] = $RecordID;
+
+      echo '<div class="Reactions">';
+      Gdn_Theme::BulletRow();
+
+      // Write the flags.
+      static $Flags = NULL;
+
+      // Allow addons to work with flags menu
+      Gdn::Controller()->EventArguments['Flags'] = &$Flags;
+      Gdn::Controller()->FireEvent('BeforeFlag');
+
+      if (!empty($Flags)) {
+         echo Gdn_Theme::BulletItem('Flags');
+
+         echo ' <span class="FlagMenu ToggleFlyout">';
+         // Write the handle.
+         echo Anchor(Sprite('ReactFlag', 'ReactSprite').' '.Wrap(T('Flag'), 'span', array('class'=>'ReactLabel')), '', 'Hijack ReactButton-Flag FlyoutButton', array('title'=>'Flag'), TRUE);
+         echo Sprite('SpFlyoutHandle', 'Arrow');
+         echo '<ul class="Flyout MenuItems Flags" style="display: none;">';
+         Gdn::Controller()->FireEvent('AfterFlagOptions');
+         echo '</ul>';
+         echo '</span> ';
+      }
+
+      Gdn::Controller()->FireEvent('AfterFlag');
+
+      Gdn::Controller()->FireEvent('AfterReactions');
+      echo '</div>';
+      Gdn::Controller()->FireEvent('Replies');
+   }
+endif;

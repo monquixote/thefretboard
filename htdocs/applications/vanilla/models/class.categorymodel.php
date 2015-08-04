@@ -1026,6 +1026,23 @@ class CategoryModel extends Gdn_Model {
    }
    
    /**
+    * Return the category that contains the permissions for the given category.
+    *
+    * @param mixed $Category
+    * @since 2.2
+    */
+   public static function PermissionCategory($Category) {
+      if (empty($Category))
+         return self::Categories(-1);
+
+      if (!is_array($Category) && !is_object($Category)) {
+         $Category = self::Categories($Category);
+      }
+
+      return self::Categories(GetValue('PermissionCategoryID', $Category));
+   }
+   
+   /**
     * Rebuilds the category tree. We are using the Nested Set tree model.
     * 
     * @ref http://articles.sitepoint.com/article/hierarchical-data-database/2
@@ -1461,7 +1478,7 @@ class CategoryModel extends Gdn_Model {
 
          // Insert the root node
          if ($this->SQL->GetWhere('Category', array('CategoryID' => -1))->NumRows() == 0)
-            $this->SQL->Insert('Category', array('CategoryID' => -1, 'TreeLeft' => 1, 'TreeRight' => 4, 'Depth' => 0, 'InsertUserID' => 1, 'UpdateUserID' => 1, 'DateInserted' => Gdn_Format::ToDateTime(), 'DateUpdated' => Gdn_Format::ToDateTime(), 'Name' => 'Root', 'UrlCode' => '', 'Description' => 'Root of category tree. Users should never see this.'));
+            $this->SQL->Insert('Category', array('CategoryID' => -1, 'TreeLeft' => 1, 'TreeRight' => 4, 'Depth' => 0, 'InsertUserID' => 1, 'UpdateUserID' => 1, 'DateInserted' => Gdn_Format::ToDateTime(), 'DateUpdated' => Gdn_Format::ToDateTime(), 'Name' => T('Root Category Name', 'Root'), 'UrlCode' => '', 'Description' => T('Root Category Description', 'Root of category tree. Users should never see this.')));
          
          // Build up the TreeLeft & TreeRight values.
          $this->RebuildTree();

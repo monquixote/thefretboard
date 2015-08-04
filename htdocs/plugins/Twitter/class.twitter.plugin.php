@@ -33,7 +33,7 @@ require_once PATH_LIBRARY.'/vendors/oauth/OAuth.php';
 
 class TwitterPlugin extends Gdn_Plugin {
    const ProviderKey = 'Twitter';
-   public static $BaseApiUrl = 'http://api.twitter.com/1.1/';
+   public static $BaseApiUrl = 'https://api.twitter.com/1.1/';
 
    protected $_AccessToken = NULL;
    
@@ -267,7 +267,7 @@ class TwitterPlugin extends Gdn_Plugin {
             $this->SetOAuthToken($Data['oauth_token'], $Data['oauth_token_secret'], 'request');
 
             // Redirect to twitter's authorization page.
-            $Url = "http://api.twitter.com/oauth/authenticate?oauth_token={$Data['oauth_token']}";
+            $Url = "https://api.twitter.com/oauth/authenticate?oauth_token={$Data['oauth_token']}";
             Redirect($Url);
          }
       }
@@ -559,7 +559,7 @@ class TwitterPlugin extends Gdn_Plugin {
       $Profile = GetValueR('User.Attributes.'.self::ProviderKey.'.Profile', $Args);
       
       $Sender->Data["Connections"][self::ProviderKey] = array(
-         'Icon' => $this->GetWebResource('icon.png'),
+         'Icon' => $this->GetWebResource('icon.png', '/'),
          'Name' => 'Twitter',
          'ProviderKey' => self::ProviderKey,
          'ConnectUrl' => '/entry/twauthorize/profile',
@@ -754,7 +754,7 @@ class TwitterPlugin extends Gdn_Plugin {
 
    public function SocialController_Twitter_Create($Sender, $Args) {
    	  $Sender->Permission('Garden.Settings.Manage');
-      if ($Sender->Form->IsPostBack()) {
+      if ($Sender->Form->AuthenticatedPostBack()) {
          $Settings = array(
              'Plugins.Twitter.ConsumerKey' => $Sender->Form->GetFormValue('ConsumerKey'),
              'Plugins.Twitter.Secret' => $Sender->Form->GetFormValue('Secret'),

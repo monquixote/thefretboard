@@ -56,7 +56,6 @@ class FacebookPlugin extends Gdn_Plugin {
    public function API($Path, $Post = FALSE) {
       // Build the url.
       $Url = 'https://graph.facebook.com/'.ltrim($Path, '/');
-      
       $AccessToken = $this->AccessToken();
       if (!$AccessToken)
          throw new Gdn_UserException("You don't have a valid Facebook connection.");
@@ -66,7 +65,6 @@ class FacebookPlugin extends Gdn_Plugin {
       else
          $Url .= '&';
       $Url .= 'access_token='.urlencode($AccessToken);
-
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_HEADER, false);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -275,7 +273,7 @@ class FacebookPlugin extends Gdn_Plugin {
       $Profile = GetValueR('User.Attributes.'.self::ProviderKey.'.Profile', $Args);
       
       $Sender->Data["Connections"][self::ProviderKey] = array(
-         'Icon' => $this->GetWebResource('icon.png'),
+         'Icon' => $this->GetWebResource('icon.png', '/'),
          'Name' => 'Facebook',
          'ProviderKey' => self::ProviderKey,
          'ConnectUrl' => $this->AuthorizeUri(FALSE, self::ProfileConnecUrl()),
@@ -381,7 +379,7 @@ class FacebookPlugin extends Gdn_Plugin {
 	
    public function SocialController_Facebook_Create($Sender, $Args) {
       $Sender->Permission('Garden.Settings.Manage');
-      if ($Sender->Form->IsPostBack()) {
+      if ($Sender->Form->AuthenticatedPostBack()) {
          $Settings = array(
              'Plugins.Facebook.ApplicationID' => $Sender->Form->GetFormValue('ApplicationID'),
              'Plugins.Facebook.Secret' => $Sender->Form->GetFormValue('Secret'),
@@ -518,7 +516,6 @@ class FacebookPlugin extends Gdn_Plugin {
 
       $AccessToken = GetValue('access_token', $Tokens);
 //      $Expires = GetValue('expires', $Tokens, NULL);
-      
       return $AccessToken;
    }
 
@@ -537,14 +534,12 @@ class FacebookPlugin extends Gdn_Plugin {
 
    public function AuthorizeUri($Query = FALSE, $RedirectUri = FALSE) {
       $AppID = C('Plugins.Facebook.ApplicationID');
-      $FBScope = C('Plugins.Facebook.Scope', Array('email','publish_stream'));
-
+      $FBScope = C('Plugins.Facebook.Scope', Array('email','public_profile'));
       if (!$RedirectUri)
          $RedirectUri = $this->RedirectUri();
       if ($Query)
          $RedirectUri .= '&'.$Query;
       $RedirectUri = urlencode($RedirectUri);
-
       $Scopes = implode(',', $FBScope);
       $SigninHref = "https://graph.facebook.com/oauth/authorize?client_id=$AppID&redirect_uri=$RedirectUri&scope=$Scopes";
       if ($Query)

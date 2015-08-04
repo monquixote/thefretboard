@@ -53,6 +53,11 @@ class ConfigurationModule extends Gdn_Module {
       return $this->_Sender;
    }
 
+   /**
+    * 
+    * @param Gdn_Form $NewValue
+    * @return Gdn_Form
+    */
    public function Form($NewValue = NULL) {
       static $Form = NULL;
 
@@ -63,6 +68,21 @@ class ConfigurationModule extends Gdn_Module {
 
       return $Form;
    }
+   
+   public function HasFiles() {
+      static $HasFiles = NULL;
+      
+      if ($HasFiles === NULL) {
+         $HasFiles = FALSE;
+         foreach ($this->Schema() as $K => $Row) {
+            if (strtolower(GetValue('Control', $Row)) == 'imageupload') {
+               $HasFiles = TRUE;
+               break;
+            }
+         }
+      }
+      return $HasFiles;
+   }
 
    public function Initialize($Schema = NULL) {
       if ($Schema !== NULL)
@@ -70,12 +90,17 @@ class ConfigurationModule extends Gdn_Module {
       
       $Form = $this->Form();
 
-      if ($Form->IsPostBack()) {
+      if ($Form->AuthenticatedPostBack()) {
          // Grab the data from the form.
          $Data = array();
 
          foreach ($this->_Schema as $Row) {
             $Name = $Row['Name'];
+            
+            if (strtolower(GetValue('Control', $Row)) == 'imageupload') {
+               $Form->SaveImage($Name, ArrayTranslate($Row, array('Prefix', 'Size')));
+            }
+            
             $Value = $Form->GetFormValue($Name);
 
             if ($Value == GetValue('Default', $Value, ''))

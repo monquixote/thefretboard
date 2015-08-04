@@ -50,7 +50,7 @@ class ConversationModel extends Gdn_Model {
          ->From('Conversation c');
 
 
-      if ($ViewingUserID !== FALSE) {
+      if ($ViewingUserID) {
          $this->SQL
             ->Select('c.CountMessages - uc.CountReadMessages', '', 'CountNewMessages')
             ->Select('uc.LastMessageID, uc.CountReadMessages, uc.DateLastViewed, uc.Bookmarked')
@@ -280,7 +280,7 @@ class ConversationModel extends Gdn_Model {
          ->Join('ConversationMessage cm', 'uc.ConversationID = cm.ConversationID and uc.UserID = cm.InsertUserID', 'left')
          ->Where('uc.ConversationID', $ConversationID)
          // ->Where('uc.UserID <>', $IgnoreUserID)
-         ->GroupBy('uc.UserID, u.Name, u.Email, uc.Deleted')
+         ->GroupBy('uc.UserID, u.Name, u.Email, uc.Deleted, u.Photo')
          ->Get();
    }
    
@@ -289,7 +289,7 @@ class ConversationModel extends Gdn_Model {
          ->From('UserConversation uc')
          ->Join('User u', 'u.UserID = uc.UserID');
       
-      Gdn_DataSet::Join($Data, array('alias' => 'uc', 'parent' => 'ConversationID', 'column' => 'Participants', 'UserID', 'u.Name', 'u.Photo'), array('sql' => $this->SQL));
+      Gdn_DataSet::Join($Data, array('alias' => 'uc', 'parent' => 'ConversationID', 'column' => 'Participants', 'UserID', 'u.Name', 'u.Email', 'u.Photo'), array('sql' => $this->SQL));
    }
    
    public function JoinLastMessages(&$Data) {
@@ -446,7 +446,7 @@ class ConversationModel extends Gdn_Model {
          $ActivityModel = new ActivityModel();
          foreach ($UnreadData->Result() as $User) {
             $Activity['NotifyUserID'] = $User->UserID;
-            $ActivityModel->Queue($Activity);
+            $ActivityModel->Queue($Activity, 'ConversationMessage');
          }
          $ActivityModel->SaveQueue();
 

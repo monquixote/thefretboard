@@ -57,8 +57,8 @@
 // SCROLL TO ELEMENT //
 function scrollTo(elementID){
 	$('html, body').animate({
-		scrollTop: $('#' + elementID).offset().top
-	}, 1500);
+		scrollTop: $('#' + elementID).offset().top;
+	}, 300);
 }
 /*
 // Scrollbar Fix, assembled from StackOverflow

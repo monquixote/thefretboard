@@ -46,6 +46,12 @@ blockquote, q {
    quotes: "" "";
 }
 
+textarea, input[type=text] {
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
 /* ===================================================================== Grid */
 
 .Row {
@@ -101,9 +107,6 @@ body {
 	content: "";
 	clear: both;
 	height: 0;
-}
-.Hidden {
-   display: none;
 }
 .Invisible {
    opacity: 0;
@@ -370,11 +373,11 @@ textarea.TextBox {
 }
 .TextBoxWrapper {
 	width: auto;
-	padding-right: 8px;
 }
 .TextBoxWrapper textarea,
 .TextBoxWrapper input {
    width: 100%;
+   display: block;
 }
 .TextBoxWrapper .PasswordStrength {
    width: 100%;
@@ -2045,10 +2048,10 @@ body.Profile.EditMode #Content form {
 	background: #f3f3f3;
 	background: rgba(0, 0, 0, 0.05);
 }
-form.Activity {
+/*form.Activity {
    display: block;
    margin: 0 0 10px;
-	text-align: right;
+	overflow: hidden;
 }
 form.Activity textarea {
    width: 100%;
@@ -2056,10 +2059,13 @@ form.Activity textarea {
    height: 60px;
    min-height: 60px;
 }
+form.Activity .Button {
+   float: right;
+}
 .ActivityComments textarea {
    height: 60px;
    min-height: 60px;
-}
+}*/
 
 /* Invitations Form */
 table.PreferenceGroup,
@@ -2629,13 +2635,16 @@ Obselete in favour of .FilterMenu for style and .ToggleMenu for functionality.
 	background: #f7f7f7;
    background: rgba(0, 0, 0, 0.03);
    margin: 0;
-   padding: 13px 20px;
+   padding: 20px;
+}
+.FormWrapper-Condensed {
+   padding: 10px;
+}
+.FormWrapper-Condensed .Buttons {
+   text-align: right;
 }
 label.B {
    font-weight: bold;
-}
-.FormWrapper-Condensed {
-   padding: 5px;
 }
 .DiscussionForm textarea {
    width: 100%;
@@ -3763,7 +3772,13 @@ body.embed .InformMessages {
    position: relative;
    font-size: 11px;
    line-height: 18px;
-   margin-left: -10px;
+   margin: 15px 0px 0px;
+}
+.ReactButton {
+   display: inline-block;
+   margin: 0px 2px;
+   line-height: 18px;
+   vertical-align: top;
 }
 .Reactions > a.React {
     margin: 0 10px;
@@ -3771,6 +3786,14 @@ body.embed .InformMessages {
 }
 .Reactions > a.React > .ReactSprite {
    margin-right: 2px;
+}
+.Flyout.Flags {
+   top: 25px;
+   z-index: 1000;
+}
+.Reactions .FlagMenu .MenuItems .ReactButton {
+   margin: 0px;
+   padding: 0px 15px;
 }
 
 .SpEditProfile {
@@ -3798,6 +3821,9 @@ body.embed .InformMessages {
   background-image: url("images/sprites-14-000000.png");
   background-position: 14px 14px;
   background-repeat: no-repeat;
+}
+input + .ReactSprite {
+   vertical-align: middle;
 }
 
 .ReactLabel {
@@ -3869,4 +3895,10 @@ body.embed .InformMessages {
 }
 .Video.YouTube .VideoPreview:hover:after {
     background-position: 0 0;
+}
+
+/* Overrides */
+
+.Hidden {
+   display: none;
 }

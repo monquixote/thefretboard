@@ -56,10 +56,19 @@ class PostController extends VanillaController {
    
    public function AnnounceOptions() {
       $Result = array(
-         2 => '@'.sprintf(T('In <b>%s.</b>'), T('the category')),
-         1 => '@'.sprintf(sprintf(T('In <b>%s</b> and recent discussions.'), T('the category'))),
-         0 => '@'.T("Don't announce.")
+         '0'  => '@'.T("Don't announce.")
+      );
+      
+      if (C('Vanilla.Categories.Use')) {
+         $Result = $Result + array(
+            '2' => '@'.sprintf(T('In <b>%s.</b>'), T('the category')),
+            '1' => '@'.sprintf(sprintf(T('In <b>%s</b> and recent discussions.'), T('the category'))),
          );
+      } else {
+         $Result = $Result + array(
+            '1' => '@'.T('In recent discussions.'),
+         );
+      }
       
       return $Result;
    }
@@ -134,7 +143,7 @@ class PostController extends VanillaController {
       
       // Set the model on the form
       $this->Form->SetModel($this->DiscussionModel);
-      if ($this->Form->IsPostBack() == FALSE) {
+      if (!$this->Form->IsPostBack()) {
          // Prep form with current data for editing
          if (isset($this->Discussion)) {
             $this->Form->SetData($this->Discussion);
@@ -146,7 +155,7 @@ class PostController extends VanillaController {
             $this->PopulateForm($this->Form);
          }
             
-      } else { // Form was submitted
+      } elseif($this->Form->AuthenticatedPostBack()) { // Form was submitted
          // Save as a draft?
          $FormValues = $this->Form->FormValues();
          $FormValues = $this->DiscussionModel->FilterForm($FormValues);
@@ -263,12 +272,12 @@ class PostController extends VanillaController {
       $this->FireEvent('BeforeDiscussionRender');
       
       if ($this->CategoryID)
-         $Breacrumbs = CategoryModel::GetAncestors($this->CategoryID);
+         $Breadcrumbs = CategoryModel::GetAncestors($this->CategoryID);
       else
-         $Breacrumbs = array();
-      $Breacrumbs[] = array('Name' => $this->Data('Title'), 'Url' => '/post/discussion');
+         $Breadcrumbs = array();
+      $Breadcrumbs[] = array('Name' => $this->Data('Title'), 'Url' => '/post/discussion');
       
-		$this->SetData('Breadcrumbs', $Breacrumbs);
+		$this->SetData('Breadcrumbs', $Breadcrumbs);
       
       $this->SetData('_AnnounceOptions', $this->AnnounceOptions());
 
@@ -291,6 +300,10 @@ class PostController extends VanillaController {
       if ($DraftID != '') {
          $this->Draft = $this->DraftModel->GetID($DraftID);
          $this->CategoryID = $this->Draft->CategoryID;
+
+         // Verify this is their draft
+         if (GetValue('InsertUserID', $this->Draft) != Gdn::Session()->UserID)
+            throw PermissionException();
       } else {
          $this->SetData('Discussion', $this->DiscussionModel->GetID($DiscussionID), TRUE);
          $this->CategoryID = $this->Discussion->CategoryID;
@@ -499,17 +512,15 @@ class PostController extends VanillaController {
          $this->Permission('Vanilla.Comments.Add', TRUE, 'Category', $Discussion->PermissionCategoryID);
       }
 
-      if (!$this->Form->IsPostBack()) {
-         // Form was validly submitted
-         if (isset($this->Comment)) {
-            $this->Form->SetData((array)$this->Comment);
-         }
-            
-      } else {
+      if($this->Form->AuthenticatedPostBack()) {
          // Save as a draft?
          $FormValues = $this->Form->FormValues();
          $FormValues = $this->CommentModel->FilterForm($FormValues);
-         
+
+         if (!$Editing) {
+            unset($FormValues['CommentID']);
+         }
+
          if ($DraftID == 0)
             $DraftID = $this->Form->GetFormValue('DraftID', 0);
          
@@ -681,7 +692,13 @@ class PostController extends VanillaController {
             }
          }
       }
-      
+      else {
+         // Load form
+         if (isset($this->Comment)) {
+            $this->Form->SetData((array)$this->Comment);
+         }
+      }
+
       // Include data for FireEvent
       if (property_exists($this,'Discussion'))
          $this->EventArguments['Discussion'] = $this->Discussion;
@@ -786,7 +803,7 @@ class PostController extends VanillaController {
 }
 
 function CheckOrRadio($FieldName, $LabelCode, $ListOptions, $Attributes = array()) {
-   $Form = new Gdn_Form();
+   $Form = Gdn::Controller()->Form;
    
    if (count($ListOptions) == 2 && array_key_exists(0, $ListOptions)) {
       unset($ListOptions[0]);

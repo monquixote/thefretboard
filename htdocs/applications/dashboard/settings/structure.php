@@ -39,12 +39,12 @@ if (!$RoleTableExists || $Drop) {
    $RoleModel = Gdn::Factory('RoleModel');
    $RoleModel->Database = $Database;
    $RoleModel->SQL = $SQL;
-   $RoleModel->Define(array('Name' => 'Guest', 'RoleID' => 2, 'Sort' => '1', 'Deletable' => '0', 'CanSession' => '0', 'Description' => 'Guests can only view content. Anyone browsing the site who is not signed in is considered to be a "Guest".'));
-   $RoleModel->Define(array('Name' => 'Unconfirmed', 'RoleID' => 3, 'Sort' => '2', 'Deletable' => '1', 'CanSession' => '1', 'Description' => 'Users must confirm their emails before becoming full members. They get assigned to this role.'));
-   $RoleModel->Define(array('Name' => 'Applicant', 'RoleID' => 4, 'Sort' => '3', 'Deletable' => '0', 'CanSession' => '1', 'Description' => 'Users who have applied for membership, but have not yet been accepted. They have the same permissions as guests.'));
-   $RoleModel->Define(array('Name' => 'Member', 'RoleID' => 8, 'Sort' => '4', 'Deletable' => '1', 'CanSession' => '1', 'Description' => 'Members can participate in discussions.'));
-   $RoleModel->Define(array('Name' => 'Moderator', 'RoleID' => 32, 'Sort' => '5', 'Deletable' => '1', 'CanSession' => '1', 'Description' => 'Moderators have permission to edit most content.'));
-   $RoleModel->Define(array('Name' => 'Administrator', 'RoleID' => 16, 'Sort' => '6', 'Deletable' => '1', 'CanSession' => '1', 'Description' => 'Administrators have permission to do anything.'));
+   $RoleModel->Define(array('Name' => 'Guest', 'RoleID' => 2, 'Sort' => '1', 'Deletable' => '0', 'CanSession' => '0', 'Description' => T('Guest Role Description', 'Guests can only view content. Anyone browsing the site who is not signed in is considered to be a "Guest".')));
+   $RoleModel->Define(array('Name' => 'Unconfirmed', 'RoleID' => 3, 'Sort' => '2', 'Deletable' => '1', 'CanSession' => '1', 'Description' => T('Unconfirmed Role Description', 'Users must confirm their emails before becoming full members. They get assigned to this role.')));
+   $RoleModel->Define(array('Name' => 'Applicant', 'RoleID' => 4, 'Sort' => '3', 'Deletable' => '0', 'CanSession' => '1', 'Description' => T('Applicant Role Description', 'Users who have applied for membership, but have not yet been accepted. They have the same permissions as guests.')));
+   $RoleModel->Define(array('Name' => 'Member', 'RoleID' => 8, 'Sort' => '4', 'Deletable' => '1', 'CanSession' => '1', 'Description' => T('Member Role Description', 'Members can participate in discussions.')));
+   $RoleModel->Define(array('Name' => 'Moderator', 'RoleID' => 32, 'Sort' => '5', 'Deletable' => '1', 'CanSession' => '1', 'Description' => T('Moderator Role Description', 'Moderators have permission to edit most content.')));
+   $RoleModel->Define(array('Name' => 'Administrator', 'RoleID' => 16, 'Sort' => '6', 'Deletable' => '1', 'CanSession' => '1', 'Description' => T('Administrator Role Description', 'Administrators have permission to do anything.')));
    unset($RoleModel);
 }
 
@@ -78,12 +78,12 @@ $Construct
    ->Column('DateOfBirth', 'datetime', TRUE)
    ->Column('DateFirstVisit', 'datetime', TRUE)
    ->Column('DateLastActive', 'datetime', TRUE, 'index')
-   ->Column('LastIPAddress', 'varchar(15)', TRUE)
+   ->Column('LastIPAddress', 'varchar(39)', TRUE)
    ->Column('AllIPAddresses', 'varchar(100)', TRUE)
    ->Column('DateInserted', 'datetime', FALSE, 'index')
-   ->Column('InsertIPAddress', 'varchar(15)', TRUE)
+   ->Column('InsertIPAddress', 'varchar(39)', TRUE)
    ->Column('DateUpdated', 'datetime', TRUE)
-   ->Column('UpdateIPAddress', 'varchar(15)', TRUE)
+   ->Column('UpdateIPAddress', 'varchar(39)', TRUE)
    ->Column('HourOffset', 'int', '0')
 	->Column('Score', 'float', NULL)
    ->Column('Admin', 'tinyint(1)', '0')
@@ -165,6 +165,7 @@ $Construct->Table('UserAuthenticationProvider')
    ->Column('PasswordUrl', 'varchar(255)', TRUE)
    ->Column('ProfileUrl', 'varchar(255)', TRUE)
    ->Column('Attributes', 'text', TRUE)
+   ->Column('IsDefault', 'tinyint', 0)
    ->Set($Explicit, $Drop);
 
 $Construct->Table('UserAuthenticationNonce')
@@ -234,8 +235,9 @@ $PermissionModel->Define(array(
    'Garden.Activity.View' => 1,
    'Garden.Profiles.View' => 1,
    'Garden.Profiles.Edit' => 'Garden.SignIn.Allow',
+   'Garden.Moderation.Manage' => 0,
    'Garden.Curation.Manage' => 'Garden.Moderation.Manage',
-   'Garden.Moderation.Manage',
+   'Garden.PersonalInfo.View' => 'Garden.Moderation.Manage',
    'Garden.AdvancedNotifications.Allow'
    ));
 
@@ -304,6 +306,7 @@ if (!$PermissionTableExists) {
    // Set initial admininstrator permissions.
    $PermissionModel->Save(array(
       'Role' => 'Administrator',
+      'Garden.SignIn.Allow' => 1,
       'Garden.Settings.Manage' => 1,
       'Garden.Users.Add' => 1,
       'Garden.Users.Edit' => 1,
@@ -388,7 +391,7 @@ $Construct
 //   ->Column('CountComments', 'int', '0')
    ->Column('InsertUserID', 'int', TRUE, 'key')
    ->Column('DateInserted', 'datetime')
-   ->Column('InsertIPAddress', 'varchar(15)', TRUE)
+   ->Column('InsertIPAddress', 'varchar(39)', TRUE)
    ->Column('DateUpdated', 'datetime', !$DateUpdatedExists, array('index', 'index.Recent', 'index.Feed'))
    ->Column('Notified', 'tinyint(1)', 0, 'index.Notify')
    ->Column('Emailed', 'tinyint(1)', 0)
@@ -449,7 +452,7 @@ $Construct
    ->Column('Format', 'varchar(20)')
    ->Column('InsertUserID', 'int')
    ->Column('DateInserted', 'datetime')
-   ->Column('InsertIPAddress', 'varchar(15)', TRUE)
+   ->Column('InsertIPAddress', 'varchar(39)', TRUE)
    ->Set($Explicit, $Drop);
 
 // Move activity comments to the activity comment table.
@@ -601,10 +604,10 @@ $Construct->Table('Log')
    ->Column('RecordID', 'int', NULL, 'index')
    ->Column('RecordUserID', 'int', NULL) // user responsible for the record
    ->Column('RecordDate', 'datetime')
-   ->Column('RecordIPAddress', 'varchar(15)', NULL, 'index')
+   ->Column('RecordIPAddress', 'varchar(39)', NULL, 'index')
    ->Column('InsertUserID', 'int') // user that put record in the log
    ->Column('DateInserted', 'datetime') // date item added to log
-   ->Column('InsertIPAddress', 'varchar(15)', NULL)
+   ->Column('InsertIPAddress', 'varchar(39)', NULL)
    ->Column('OtherUserIDs', 'varchar(255)', NULL)
    ->Column('DateUpdated', 'datetime', NULL)
    ->Column('ParentRecordID', 'int', NULL, 'index')
@@ -639,6 +642,10 @@ $Construct->Table('Ban')
    ->Column('CountBlockedRegistrations', 'uint', 0)
    ->Column('InsertUserID', 'int')
    ->Column('DateInserted', 'datetime')
+   ->Column('InsertIPAddress', 'varchar(15)', TRUE)
+   ->Column('UpdateUserID', 'int', TRUE)
+   ->Column('DateUpdated', 'datetime', TRUE)
+   ->Column('UpdateIPAddress', 'varchar(15)', TRUE)
    ->Engine('InnoDB')
    ->Set($Explicit, $Drop);
 
@@ -693,7 +700,27 @@ $Construct
    ->Column('NewUserID', 'int')
    ->Set();
 
+// Save the current input formatter to the user's config.
+// This will allow us to change the default later and grandfather existing forums in.
+SaveToConfig('Garden.InputFormatter', C('Garden.InputFormatter'));
+
+// We need to undo cleditor's bad behavior for our reformed users.
+// If you still need to manipulate this, do it in memory instead (SAVE = false).
+SaveToConfig('Garden.Html.SafeStyles', TRUE);
+
 // Make sure the smarty folders exist.
 if (!file_exists(PATH_CACHE.'/Smarty')) @mkdir(PATH_CACHE.'/Smarty');
 if (!file_exists(PATH_CACHE.'/Smarty/cache')) @mkdir(PATH_CACHE.'/Smarty/cache');
 if (!file_exists(PATH_CACHE.'/Smarty/compile')) @mkdir(PATH_CACHE.'/Smarty/compile');
+
+// Disallow additional super-admin users.
+// Get admins' UserIDs, sort lowest to highest, & exempt lowest UserID.
+$users = Gdn::userModel()->getWhere(array('Admin' => 1))->resultArray();
+$affect = ConsolidateArrayValuesByKey($users, 'UserID');
+sort($affect);
+array_shift($affect);
+if (count($affect)) {
+   // Remove admin power & flush cache.
+   Gdn::userModel()->update(array('Admin' => 0), array('UserID' => $affect));
+   Gdn::cache()->flush();
+}

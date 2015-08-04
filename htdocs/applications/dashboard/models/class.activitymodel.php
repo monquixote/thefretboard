@@ -1272,7 +1272,7 @@ class ActivityModel extends Gdn_Model {
       }
       
       // If this is a wall post then we need to notify on that.
-      if ($Activity['ActivityType'] == 'WallPost' && $Activity['NotifyUserID'] == self::NOTIFY_PUBLIC) {
+      if (GetValue('Name', $ActivityType) == 'WallPost' && $Activity['NotifyUserID'] == self::NOTIFY_PUBLIC) {
          $this->NotifyWallPost($Activity);
       }
       
@@ -1310,7 +1310,7 @@ class ActivityModel extends Gdn_Model {
       if (GetValue('RegardingUserID', $NewActivity)) {
          $RegardingUserIDs = GetValue('RegardingUserIDs', $OldActivity['Data'], array());
          array_unshift($RegardingUserIDs, $OldActivity['RegardingUserID']);
-         if (($i = array_search($NewActivity['RegardingUserID'])) !== FALSE) {
+         if (($i = array_search($NewActivity['RegardingUserID'], $RegardingUserIDs)) !== FALSE) {
             unset($RegardingUserIDs[$i]);
             $RegardingUserIDs = array_values($RegardingUserIDs);
          }
@@ -1342,10 +1342,13 @@ class ActivityModel extends Gdn_Model {
       $Activity = array(
          'ActivityType' => 'WallPost',
          'ActivityUserID' => $WallPost['RegardingUserID'],
+         'Format' => $WallPost['Format'],
          'NotifyUserID' => $WallPost['ActivityUserID'],
          'RecordType' => 'Activity',
          'RecordID' => $WallPost['ActivityID'],
+         'RegardingUserID' => $WallPost['ActivityUserID'],
          'Route' => UserUrl($NotifyUser, ''),
+         'Story' => $WallPost['Story'],
          'HeadlineFormat' => T('HeadlineFormat.NotifyWallPost', '{ActivityUserID,User} posted on your <a href="{Url,url}">wall</a>.')
       );
       

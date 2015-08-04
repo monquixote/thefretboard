@@ -77,6 +77,9 @@ class UserController extends DashboardController {
          if ($Keywords)
             $Offset = 0;
       }
+      if (!is_string($Keywords)) {
+         $Keywords = '';
+      }
 
       // Put the Keyword back in the form
       if ($Keywords)
@@ -314,7 +317,7 @@ class UserController extends DashboardController {
             if ($this->Request->Get('Target')) {
                $this->RedirectUrl = $this->Request->Get('Target');
             } else {
-               $this->RedirectUrl = UserUrl($User);
+               $this->RedirectUrl = Url(UserUrl($User));
             }
          }
       }

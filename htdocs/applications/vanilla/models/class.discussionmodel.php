@@ -279,7 +279,6 @@ class DiscussionModel extends VanillaModel {
       $Sql->Select('d2.*')
          ->From('Discussion d')
          ->Join('Discussion d2', 'd.DiscussionID = d2.DiscussionID')
-         ->OrderBy('d.DateLastComment', 'desc')
          ->Limit($Limit, $Offset);
       
       if ($this->Watching && !isset($Where['d.CategoryID'])) {
@@ -288,6 +287,8 @@ class DiscussionModel extends VanillaModel {
             $Where['d.CategoryID'] = $Watch;
       }
       
+      $this->EventArguments['SortField'] = C('Vanilla.Discussions.SortField', 'd.DateLastComment');
+      $this->EventArguments['SortDirection'] = C('Vanilla.Discussions.SortDirection', 'desc');
       $this->EventArguments['Wheres'] =& $Where;
       $this->FireEvent('BeforeGet');
       
@@ -322,6 +323,18 @@ class DiscussionModel extends VanillaModel {
       }
       
       $Sql->Where($Where);
+      
+      // Get sorting options from config
+      $SortField = $this->EventArguments['SortField'];
+      if (!in_array($SortField, array('d.DiscussionID', 'd.DateLastComment', 'd.DateInserted'))) {
+         trigger_error("You are sorting discussions by a possibly sub-optimal column.", E_USER_NOTICE);
+      }
+      
+      $SortDirection = $this->EventArguments['SortDirection'];
+      if ($SortDirection != 'asc')
+         $SortDirection = 'desc';
+      
+      $Sql->OrderBy($SortField, $SortDirection);
       
       // Add the UserDiscussion query.
       if (($UserID = Gdn::Session()->UserID) > 0) {
@@ -392,7 +405,10 @@ class DiscussionModel extends VanillaModel {
             //->Where('w.DateLastViewed', NULL)
             //->OrWhere('d.DateLastComment >', 'w.DateLastViewed')
             //->EndWhereGroup()
-            ->Where('d.CountComments >', 'COALESCE(w.CountComments, 0)', TRUE, FALSE);
+            ->BeginWhereGroup()
+            ->Where('d.CountComments >', 'COALESCE(w.CountComments, 0)', TRUE, FALSE)
+            ->OrWhere('w.DateLastViewed', NULL)
+            ->EndWhereGroup();
       } else {
 			$this->SQL
 				->Select('0', '', 'WatchUserID')
@@ -768,15 +784,21 @@ class DiscussionModel extends VanillaModel {
     * @param int $Limit Max number to get.
     * @param int $Offset Number to skip.
     * @param int $LastDiscussionID A hint for quicker paging.
+    * @param int $WatchUserID User to use for read/unread data.
     * @return Gdn_DataSet SQL results.
     */
-   public function GetByUser($UserID, $Limit, $Offset, $LastDiscussionID = FALSE) {
+   public function GetByUser($UserID, $Limit, $Offset, $LastDiscussionID = FALSE, $WatchUserID = FALSE) {
       $Perms = DiscussionModel::CategoryPermissions();
       
       if (is_array($Perms) && empty($Perms)) {
          return new Gdn_DataSet(array());
       }
-      
+
+      // Allow us to set perspective of a different user.
+      if (!$WatchUserID) {
+         $WatchUserID = $UserID;
+      }
+
       // The point of this query is to select from one comment table, but filter and sort on another.
       // This puts the paging into an index scan rather than a table scan.
       $this->SQL
@@ -791,12 +813,12 @@ class DiscussionModel extends VanillaModel {
          ->OrderBy('d.DiscussionID', 'desc');
       
       // Join in the watch data.
-      if ($UserID > 0) {
+      if ($WatchUserID > 0) {
          $this->SQL
             ->Select('w.UserID', '', 'WatchUserID')
             ->Select('w.DateLastViewed, w.Dismissed, w.Bookmarked')
             ->Select('w.CountComments', '', 'CountCommentWatch')
-            ->Join('UserDiscussion w', 'd2.DiscussionID = w.DiscussionID and w.UserID = '.$UserID, 'left');
+            ->Join('UserDiscussion w', 'd2.DiscussionID = w.DiscussionID and w.UserID = '.$WatchUserID, 'left');
       } else {
 			$this->SQL
 				->Select('0', '', 'WatchUserID')
@@ -1395,6 +1417,11 @@ class DiscussionModel extends VanillaModel {
             if ($DiscussionID > 0) {
                // Updating
                $Stored = $this->GetID($DiscussionID, DATASET_TYPE_ARRAY);
+
+               // Block Format change if we're forcing the formatter.
+               if (C('Garden.ForceInputFormatter')) {
+                  unset($Fields['Format']);
+               }
                
                // Clear the cache if necessary.
                if (GetValue('Announce', $Stored) != GetValue('Announce', $Fields)) {
@@ -1407,9 +1434,14 @@ class DiscussionModel extends VanillaModel {
 
                SetValue('DiscussionID', $Fields, $DiscussionID);
                LogModel::LogChange('Edit', 'Discussion', (array)$Fields, $Stored);
+
+               if (GetValue('CategoryID', $Stored) != GetValue('CategoryID', $Fields)) {
+                  $StoredCategoryID = GetValue('CategoryID', $Stored); 	$StoredCategoryID = GetValue('CategoryID', $Stored);
+               }
                
-               if (GetValue('CategoryID', $Stored) != GetValue('CategoryID', $Fields)) 
+               if (GetValue('CategoryID', $Stored) != GetValue('CategoryID', $Fields)) {
                   $StoredCategoryID = GetValue('CategoryID', $Stored);
+               }
                
             } else {
                // Inserting.
@@ -1588,6 +1620,10 @@ class DiscussionModel extends VanillaModel {
             continue;
          
          $UserID = $Row['UserID'];
+         // Check user can still see the discussion.
+         if (!Gdn::UserModel()->GetCategoryViewPermission($UserID, $Category['CategoryID']))
+            continue;
+            
          $Name = $Row['Name'];
          if (strpos($Name, '.Email.') !== FALSE) {
             $NotifyUsers[$UserID]['Emailed'] = ActivityModel::SENT_PENDING;

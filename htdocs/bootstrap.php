@@ -31,10 +31,18 @@ date_default_timezone_set('UTC');
 // Include the core function definitions
 require_once(PATH_LIBRARY_CORE.'/functions.error.php');
 require_once(PATH_LIBRARY_CORE.'/functions.general.php');
+require_once(PATH_LIBRARY_CORE.'/functions.compatibility.php');
 
 // Include and initialize the autoloader
 require_once(PATH_LIBRARY_CORE.'/class.autoloader.php');
 Gdn_Autoloader::Start();
+
+// Guard against broken cache files
+if (!class_exists('Gdn')) {
+   // Throwing an exception here would result in a white screen for the user.
+   // This error usually indicates the .ini files in /cache are out of date and should be deleted.
+   exit("Class Gdn not found.");
+}
 
 // Cache Layer
 Gdn::FactoryInstall(Gdn::AliasCache, 'Gdn_Cache', NULL, Gdn::FactoryRealSingleton, 'Initialize');

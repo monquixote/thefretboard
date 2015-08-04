@@ -44,7 +44,7 @@ class InThisDiscussionModule extends Gdn_Module {
       $String = '';
       ob_start();
       ?>
-      <div id="InThisDiscussion" class="Box">
+      <div class="Box">
          <h4><?php echo T('In this Discussion'); ?></h4>
          <ul class="PanelInfo">
          <?php

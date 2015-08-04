@@ -156,11 +156,11 @@ class DashboardHooks implements Gdn_IPlugin {
          $Menu->AddLink('Users', T('Applicants').' <span class="Popin" rel="/dashboard/user/applicantcount"></span>', 'dashboard/user/applicants', 'Garden.Users.Approve');
 
       $Menu->AddItem('Moderation', T('Moderation'), FALSE, array('class' => 'Moderation'));
-      $Menu->AddLink('Moderation', T('Spam Queue').' <span class="Popin" rel="/dashboard/log/count/spam"></span>', 'dashboard/log/spam', 'Garden.Moderation.Manage');
+      $Menu->AddLink('Moderation', T('Spam Queue'), 'dashboard/log/spam', 'Garden.Moderation.Manage');
       $Menu->AddLink('Moderation', T('Moderation Queue').' <span class="Popin" rel="/dashboard/log/count/moderate"></span>', 'dashboard/log/moderation', 'Garden.Moderation.Manage');
       $Menu->AddLink('Moderation', T('Change Log'), 'dashboard/log/edits', 'Garden.Moderation.Manage');
-      $Menu->AddLink('Moderation', T('Banning'), 'dashboard/settings/bans', 'Garden.Moderation.Manage');
-		
+      $Menu->AddLink('Moderation', T('Banning'), 'dashboard/settings/bans', 'Garden.Settings.Manage');
+
 		$Menu->AddItem('Forum', T('Forum Settings'), FALSE, array('class' => 'Forum'));
       $Menu->AddLink('Forum', T('Social'), 'dashboard/social', 'Garden.Settings.Manage');
 		
@@ -208,5 +208,31 @@ class DashboardHooks implements Gdn_IPlugin {
             Trace(Gdn::UserModel()->Validation->ResultsText(), TRACE_WARNING);
          }
       }
-   }   
+   }
+   
+   /**
+    * Method for plugins that want a friendly /sso method to hook into.
+    * 
+    * @param RootController $Sender
+    * @param string $Target The url to redirect to after sso.
+    */
+   public function RootController_SSO_Create($Sender, $Target = '') {
+      if (!$Target)
+         $Target = '/';
+      
+      // TODO: Make sure the target is a safe redirect.
+      
+      // Get the default authentication provider.
+      $DefaultProvider = Gdn_AuthenticationProviderModel::GetDefault();
+      $Sender->EventArguments['Target'] = $Target;
+      $Sender->EventArguments['DefaultProvider'] = $DefaultProvider;
+      $Handled = FALSE;
+      $Sender->EventArguments['Handled'] =& $Handled;
+      
+      $Sender->FireEvent('SSO');
+      
+      // If an event handler didn't handle the signin then just redirect to the target.
+      if (!$Handled)
+         Redirect($Target, 302);
+   }
 }

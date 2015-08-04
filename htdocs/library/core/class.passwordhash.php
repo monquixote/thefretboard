@@ -113,6 +113,8 @@ class Gdn_PasswordHash extends PasswordHash {
             
             if (md5($Password) == $StoredHash)
                $Result = TRUE;
+            elseif (sha1($Password) == $StoredHash)
+               $Result = TRUE;
             elseif (sha1($StoredSalt.sha1($Password)) == $StoredHash)
                $Result = TRUE;
             else
@@ -136,6 +138,10 @@ class Gdn_PasswordHash extends PasswordHash {
             
             $VbHash = md5(md5($Password).$Salt);
             $Result = $VbHash == $VbStoredHash;
+            break;
+         case 'vbulletin5': // Since 5.1
+            // md5 sum the raw password before crypt. Nice work as usual vb.
+            $Result = $StoredHash === crypt(md5($Password), $StoredHash);
             break;
          case 'xenforo':
             $Data = @unserialize($StoredHash);
