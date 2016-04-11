@@ -12,16 +12,17 @@
   ];
 
   // Intialize the Editor plugin
-  var editor = new Editor({
-    textarea: '.TextBox'
-  });
+  $('.TextBox').Editor();
+//  var editor = new Editor({
+//    textarea: '.TextBox'
+//  });
 
-  // Attach event handlers
-  $(document)
-    .on(attachTriggers.join(' '), editor.attachEditorHandler.bind(editor))
-    .on(clearTriggers.join(' '),  editor.clearEditorHandler.bind(editor));
+//  // Attach event handlers
+//  $(document)
+//    .on(attachTriggers.join(' '), editor.attachEditorHandler.bind(editor))
+//    .on(clearTriggers.join(' '),  editor.clearEditorHandler.bind(editor));
 
-  // Noop jQuery Autogrow so things don't break
-  $.fn.autogrow = $.noop;
+//  // Noop jQuery Autogrow so things don't break
+//  $.fn.autogrow = $.noop;
 
 })(jQuery, window, document);

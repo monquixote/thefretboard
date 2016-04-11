@@ -248,7 +248,6 @@ pre.CodeBlock {
   padding: 20px;
   font-size: inherit;
   margin: 5px 0;
-  -webkit-transition: padding 0.1s ease;
   transition: padding 0.1s ease; }
 
 .AlignLeft {
@@ -277,6 +276,8 @@ pre.CodeBlock {
   padding: inherit;
   font: inherit;
   outline: none; }
+  .editor-composer img {
+    max-width: 100%; }
 
 /**
  * Adjust some styles explicitly within the editor composer. These match the

@@ -14,6 +14,7 @@ $PluginInfo['SphinxSearch'] = array(
     'RequiredApplications' => array('Vanilla' => '2.0.18.4'),
     'RequiredTheme' => FALSE,
     'RequiredPlugins' => FALSE,
+    'MobileFriendly' => TRUE,
     'HasLocale' => TRUE,
     'SettingsUrl' => '/plugin/sphinxsearch',
     'SettingsPermission' => 'Garden.AdminUser.Only',
