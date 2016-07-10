@@ -6,6 +6,7 @@
 <body id="{$BodyID}" class="{$BodyClass}">
 <div id="Frame">
     <div class="Banner">
+	{asset name="Menu"}
         <ul>
             {home_link}
             {profile_link}
