@@ -55,11 +55,11 @@ class WidgetStats extends Widgets implements SplObserver {
                 $Sender->AddModule($Module);
             }
         } else if (isset($Results[$this->NameTMainSearches]['matches'])) {
-            SaveToConfig('Plugin.SphinxSearch.IndexerMainTotal', $Results[$this->NameTMainSearches]['total_found']);
+            // SaveToConfig('Plugin.SphinxSearch.IndexerMainTotal', $Results[$this->NameTMainSearches]['total_found']);
         } else if (isset($Results[$this->NameTDeltaSearches]['matches'])) {
-            SaveToConfig('Plugin.SphinxSearch.IndexerDeltaTotal', $Results[$this->NameTDeltaSearches]['total_found']);
+            // SaveToConfig('Plugin.SphinxSearch.IndexerDeltaTotal', $Results[$this->NameTDeltaSearches]['total_found']);
         } else if (isset($Results[$this->NameTStatsSearches]['matches'])) {
-            SaveToConfig('Plugin.SphinxSearch.IndexerStatsTotal', $Results[$this->NameTStatsSearches]['total_found']);
+            // SaveToConfig('Plugin.SphinxSearch.IndexerStatsTotal', $Results[$this->NameTStatsSearches]['total_found']);
         }
     }
 

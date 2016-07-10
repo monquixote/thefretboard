@@ -1,0 +1,7 @@
+{
+  "name": "vanilla-mediumeditor",
+  "private": true,
+  "dependencies": {
+    "medium-editor": "1.8.8"
+  }
+}

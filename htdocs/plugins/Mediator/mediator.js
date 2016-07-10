@@ -50,7 +50,7 @@
 		}
 
 		$('.Message a').each(Check);
-		$('.MessageList').live('DOMNodeInserted', function(e) {
+		$(document).on('DOMNodeInserted', '.MessageList', function(e) {
 			if ($(e.target).hasClass('Comment')) {
 				$('div.Message a', e.target).each(Check);
 			}

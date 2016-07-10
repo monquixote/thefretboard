@@ -4,7 +4,7 @@ jQuery(document).ready(function($){
       $(el).addClass('IgnoreHide');
    });
 
-   $('.Ignored').live('click', function(event) {
+   $(document).on('click', '.Ignored', function(event) {
       var el = $(event.target);
       if (!el.hasClass('Ignored'))
          el = el.closest('.Ignored');

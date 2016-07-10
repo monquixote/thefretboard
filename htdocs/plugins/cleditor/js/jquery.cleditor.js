@@ -1,5 +1,5 @@
-﻿/*!
- CLEditor WYSIWYG HTML Editor v1.4.4 Monq Hack
+/*!
+ CLEditor WYSIWYG HTML Editor v1.4.4
  http://premiumsoftware.net/CLEditor
  requires jQuery v1.4.2 or later
 
@@ -7,12 +7,7 @@
  Dual licensed under the MIT or GPL Version 2 licenses.
 */
 
-// ==ClosureCompiler==
-// @compilation_level SIMPLE_OPTIMIZATIONS
-// @output_file_name jquery.cleditor.min.js
-// ==/ClosureCompiler==
-
-jQuery(document).ready(function($) {
+(function ($) {
 
   //==============
   // jQuery Plugin
@@ -93,8 +88,7 @@ jQuery(document).ready(function($) {
       "paste,,|" +
       "pastetext,Paste as Text,inserthtml,|" +
       "print,,|" +
-      "source,Show Source|"+
-      "fullscreen,Expand,fullscreen"
+      "source,Show Source"
     },
 
     // imagesPath - returns the path to the images folder
@@ -433,27 +427,6 @@ jQuery(document).ready(function($) {
       setTimeout(function() {refreshButtons(editor);}, 100);
 
     }
-    
-    else if (buttonName == "fullscreen") {
-       if (editor.originalHeight == undefined) {
-          editor.originalHeight = editor.$area.height();
-       }
-       
-       if (editor.expandedHeight == undefined) {
-          editor.expandedHeight = editor.originalHeight * 2;
-          if(editor.expandedHeight < 800)
-             editor.expandedHeight = 800;
-       }
-       
-       var newHeight = editor.expandedHeight;
-       
-       if (editor.$area.outerHeight() >= newHeight - 50) {
-          newHeight = editor.originalHeight;
-       }
-       
-       editor.$frame.height(newHeight);
-       editor.$area.height(newHeight);
-    }
 
     // Check for rich text mode
     else if (!sourceMode(editor)) {
@@ -713,8 +686,8 @@ jQuery(document).ready(function($) {
     }
 
     // Add the hover effect to all items
-//    if ($popup.hasClass(LIST_CLASS) || popupHover === true)
-//      $popup.children().hover(hoverEnter, hoverLeave);
+    if ($popup.hasClass(LIST_CLASS) || popupHover === true)
+      $popup.children().hover(hoverEnter, hoverLeave);
 
     // Add the popup to the array and return it
     popups[popupName] = $popup[0];
@@ -877,11 +850,9 @@ jQuery(document).ready(function($) {
     doc.open();
     doc.write(
       options.docType +
-      '<html><head>' +
+      '<html>' +
       ((options.docCSSFile === '') ? '' : '<head><link rel="stylesheet" type="text/css" href="' + options.docCSSFile + '" /></head>') +
-      '<meta http-equiv="X-UA-Compatible" content="IE=edge" />' + 
-      '</head>' + 
-      '<body class="editorbody" style="' + options.bodyStyle + '"></body></html>' //Monq tweak so can be selected
+      '<body style="' + options.bodyStyle + '"></body></html>'
     );
     doc.close();
 
@@ -1026,9 +997,7 @@ jQuery(document).ready(function($) {
         if (enabled === undefined)
           enabled = true;
       }
-      else if (button.name === "fullscreen")
-         enabled = true;
-      else if (((inSourceMode || iOS) && (button.name !== "source" && button.name != "fullscreen")) ||
+      else if (((inSourceMode || iOS) && button.name !== "source") ||
       (ie && (command === "undo" || command === "redo")))
         enabled = false;
       else if (command && command !== "print") {
@@ -1164,8 +1133,6 @@ jQuery(document).ready(function($) {
     // Prevent script injection attacks by html encoding script tags
     html = html.replace(/<(?=\/?script)/ig, "&lt;");
 
-    
-
     // Update the iframe checksum
     if (options.updateTextArea)
       editor.frameChecksum = checksum(html);
@@ -1185,12 +1152,6 @@ jQuery(document).ready(function($) {
       options = editor.options,
       updateTextAreaCallback = options.updateTextArea,
       $area = editor.$area;
-
-    //Monquixote Quote Fix 10/12/2013
-    if(html.slice(-6) == "quote>") {
-      html += "<br>";
-      $(editor.doc.body).html(html);
-    }
 
     // Check for iframe change to avoid unnecessary firing
     // of potentially heavy updateTextArea callbacks.
@@ -1216,4 +1177,4 @@ jQuery(document).ready(function($) {
 
   }
 
-});
+})(jQuery);
