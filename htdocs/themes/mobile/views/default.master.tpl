@@ -12,6 +12,7 @@
 		  {inbox_link}
 		  {custom_menu}
 		  {event name="BeforeSignInLink"}
+		  {module name="NewDiscussion"}
 		  {if !$User.SignedIn}
 			 <li class="SignInItem">{link path="signin" class="SignIn"}</li>
 		  {/if}
