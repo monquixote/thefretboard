@@ -13,6 +13,7 @@
             {inbox_link}
 						{discussions_link}
 						<li><a href="/search?Search=" title="Search">Search</a></li>
+						{custom_menu}
             {event name="BeforeSignInLink"}
             {if !$User.SignedIn}
                 <li class="SignInItem">{link path="signin" class="SignIn"}</li>
