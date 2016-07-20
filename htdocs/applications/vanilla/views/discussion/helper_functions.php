@@ -116,7 +116,8 @@ if (!function_exists('WriteComment')):
             <span class="AuthorInfo">
                <?php
                echo ' '.WrapIf(htmlspecialchars(val('Title', $Author)), 'span', array('class' => 'MItem AuthorTitle'));
-               echo ' '.WrapIf(htmlspecialchars(val('Location', $Author)), 'span', array('class' => 'MItem AuthorLocation'));
+               // Get rid of this, we don't need the author's location on posts (looks weird with the Fret score)
+               // echo ' '.WrapIf(htmlspecialchars(val('Location', $Author)), 'span', array('class' => 'MItem AuthorLocation'));
                $Sender->fireEvent('AuthorInfo');
                ?>
             </span>
