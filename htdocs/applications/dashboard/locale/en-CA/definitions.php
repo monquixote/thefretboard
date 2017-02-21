@@ -78,7 +78,9 @@ $Definition['RoleID'] = 'role';
 $Definition['EmailHeader'] = 'Hello {User.Name}!
 ';
 $Definition['EmailFooter'] = '
-Have a great day!';
+Have a great day!
+
+To unsubscribe, please visit www.thefretboard.co.uk and update your notification preferences';
 
 $Definition['EmailInvitation'] = 'Hello!
 
@@ -121,7 +123,9 @@ $Definition['EmailNotification'] = '%1$s
 Follow the link below to check it out:
 %2$s
 
-Have a great day!';
+Have a great day!
+
+To unsubscribe, please visit www.thefretboard.co.uk and update your notification preferences';
 $Definition['EmailStoryNotification'] = '%1$s
 
 %3$s
@@ -130,7 +134,9 @@ $Definition['EmailStoryNotification'] = '%1$s
 Follow the link below to check it out:
 %2$s
 
-Have a great day!';
+Have a great day!
+
+To unsubscribe, please visit www.thefretboard.co.uk and update your notification preferences';
 $Definition['PluginHelp'] = "Plugins allow you to add functionality to your site.<br />Once a plugin has been added to your %s folder, you can enable or disable it here.";
 $Definition['ApplicationHelp'] = "Applications allow you to add large groups of functionality to your site.<br />Once an application has been added to your %s folder, you can enable or disable it here.";
 $Definition['ThemeHelp'] = "Themes allow you to change the look &amp; feel of your site.<br />Once a theme has been added to your %s folder, you can enable it here.";
