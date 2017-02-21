@@ -22,20 +22,26 @@
 <body id="{$BodyID}" class="{$BodyClass}">
 <div id="Frame">
 	<div id="Body">
-		<div class="Row">
+		<div class="Row relative">
 			<div id="topBanner"></div>
-			<div class="Head" id="Head">
-				<div class="Row TopRow">
-					<strong class="SiteTitle"><a href="{link path="/"}">{logo}</a></strong>
-					<div class="SiteSearch">{searchbox}</div>
-					<ul class="SiteMenu">
-						{discussions_link}
-						{activity_link}
-						{custom_menu}
-					</ul>
-				</div>
+<!--
+			<div id="promo-banner">
+			  <a href="" title="" target="_blank">
+			    <img src="#" />
+			  </a>
 			</div>
-			<div class="BreadcrumbsWrapper">{breadcrumbs}</div>
+-->
+			<div class="BreadcrumbsWrapper">
+			  {breadcrumbs}
+			  <div class="nav" id="nav">
+				  <div class="SiteSearch">{searchbox}</div>
+			    <ul class="SiteMenu">
+				    {discussions_link}
+				    {activity_link}
+				    {custom_menu}
+			    </ul>
+			  </div>
+		  </div>
 			<div class="Column PanelColumn" id="Panel">
 				{module name="MeModule"}
 				{asset name="Panel"}
