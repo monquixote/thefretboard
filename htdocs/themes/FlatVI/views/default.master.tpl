@@ -24,13 +24,11 @@
 	<div id="Body">
 		<div class="Row relative">
 			<div id="topBanner"></div>
-<!--
 			<div id="promo-banner">
-			  <a href="" title="" target="_blank">
-			    <img src="#" />
+			  <a href="http://www.theguitarshow.co.uk/" title="" target="_blank">
+			    <img src="/themes/FlatVI/img/guitarshowlogo17-WEBsite.jpg" />
 			  </a>
 			</div>
--->
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
 			  <div class="nav" id="nav">
