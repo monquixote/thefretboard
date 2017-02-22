@@ -781,19 +781,30 @@ h1.H:before {
 
 /* TOP BANNER */
 #topBanner {
-	width: auto; height: 140px;
-	background: url(../img/thefb_header_2017.png) no-repeat transparent;
+	width: 45%; 
+	top: 5px;
+	position: relative;
+}
+
+#topBanner img {
+  width: auto;
+  max-height: 140px;
+	max-width: 100%;
 }
 
 #promo-banner {
   position: absolute;
-  top: 35px;
+  top: 15px;
   right: 20px;
+  width: 45%;
+  text-align: right;
 }
 
 #promo-banner img {
-  height: auto;
-  width: 400px;
+  max-height: 140px;
+  width: auto;
+  max-width: 100%;
+	margin-top: 10px;
 }
 
 /* MAIN COLUMN */
