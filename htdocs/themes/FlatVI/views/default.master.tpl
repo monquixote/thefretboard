@@ -23,7 +23,7 @@
 <div id="Frame">
 	<div id="Body">
 		<div class="Row relative">
-			<div id="topBanner"></div>
+			<a href="/" title="The Fretboard"><div id="topBanner"></div></a>
 			<div id="promo-banner">
 			  <a href="http://www.theguitarshow.co.uk/" title="" target="_blank">
 			    <img src="/themes/FlatVI/img/guitarshowlogo17-WEBsite.jpg" />
