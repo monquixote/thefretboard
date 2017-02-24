@@ -206,7 +206,7 @@ var wysihtml5ParserRules = {
             "rename_tag": "span"
         },
         "iframe": {
-            "remove": 1
+            "remove": 0
         },
         "figcaption": {
             "rename_tag": "div"
@@ -225,7 +225,7 @@ var wysihtml5ParserRules = {
             "check_attributes": {
                 "width": "numbers",
                 "alt": "alt",
-                "src": "url", // if you compiled master manually then change this from 'url' to 'src'
+                "src": "src", // if you compiled master manually then change this from 'url' to 'src'
                 "height": "numbers"
             },
             "add_class": {
