@@ -25,7 +25,7 @@
 		<div class="Row relative">
 		  <div id="topBanner">
   			<a href="/" title="The Fretboard">
-  			  <img src="/themes/FlatVI/img/thefb_header_2017.png">
+  			  <img src="/themes/FlatVI/img/thefb_header_2017_2.png">
 			  </a>
 		  </div>
 			<div id="promo-banner">
