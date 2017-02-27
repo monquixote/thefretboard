@@ -29,9 +29,11 @@
 			  </a>
 		  </div>
 			<div id="promo-banner">
-			  <a href="http://www.theguitarshow.co.uk/" title="" target="_blank">
+			  <!--
+		    <a href="http://www.theguitarshow.co.uk/" title="" target="_blank">
 			    <img src="/themes/FlatVI/img/guitarshowlogo17-WEBsite.jpg" />
 			  </a>
+			  -->
 			</div>
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
