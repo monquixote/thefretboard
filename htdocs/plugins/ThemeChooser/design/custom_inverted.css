@@ -1,0 +1,11 @@
+/* Let the custom style begin - Thanks for using ThemeChooser! */
+
+body {
+  filter: invert(100%);
+  background-color: #000;
+}
+
+#Content img, #Content .lazyload {
+  filter: invert(100%);
+}
+
