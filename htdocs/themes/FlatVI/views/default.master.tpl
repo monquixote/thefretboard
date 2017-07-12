@@ -29,11 +29,9 @@
 			  </a>
 		  </div>
 			<div id="promo-banner">
-			  <!--
-		    <a href="http://www.theguitarshow.co.uk/" title="" target="_blank">
-			    <img src="/themes/FlatVI/img/guitarshowlogo17-WEBsite.jpg" />
+		    <a href="/discussion/107822/fretboard-jam-2017-leicester-2nd-september-12-5-confirmed-quad-studios-booked/" title="" target="_blank">
+			    <img src="/themes/FlatVI/img/forum_jam_09-17 v2.png" />
 			  </a>
-			  -->
 			</div>
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
