@@ -118,7 +118,9 @@ $Definition['PasswordRequest'] = 'Someone has requested to reset your password a
   %3$s
 
 If you did not make this request, disregard this email.';
-$Definition['EmailNotification'] = '%1$s
+$Definition['EmailNotification'] = '******* DO NOT REPLY TO THIS EMAIL *******
+
+%1$s
 
 Follow the link below to check it out:
 %2$s
@@ -126,7 +128,9 @@ Follow the link below to check it out:
 Have a great day!
 
 To unsubscribe, please visit www.thefretboard.co.uk and update your notification preferences';
-$Definition['EmailStoryNotification'] = '%1$s
+$Definition['EmailStoryNotification'] = '******* DO NOT REPLY TO THIS EMAIL *******
+
+%1$s
 
 %3$s
 
