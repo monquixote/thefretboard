@@ -30,7 +30,7 @@
 		  </div>
 			<div id="promo-banner">
 		    <a href="/discussion/107822/fretboard-jam-2017-leicester-2nd-september-12-5-confirmed-quad-studios-booked/p1" title="" target="_blank">
-			    <img src="/themes/FlatVI/img/forum_jam_09-17 v2.png" />
+			    <img src="/themes/FlatVI/img/forum_jam_09-17_v8.png" />
 			  </a>
 			</div>
 			<div class="BreadcrumbsWrapper">
