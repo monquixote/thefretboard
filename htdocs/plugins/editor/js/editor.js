@@ -1302,7 +1302,7 @@
                 var imageUrl = e.target.value;
                 // Doesn't have to be perfect, because URL can still not exist.
                 var imageUrlRegex = /(?:\/\/)(?:.+)(\/)(.*\.(?:jpe?g|gif|png))(?:\?([^#]*))?(?:#(.*))?/i;
-                if (imageUrlRegex.test(imageUrl)) {
+//                if (imageUrlRegex.test(imageUrl)) {
 
                     editorInstance.focus();
 
@@ -1329,7 +1329,7 @@
                     // Now clear input and close dropdown
                     $(this).closest('.editor-dropdown-open').removeClass('editor-dropdown-open');
                     $(this).val('');
-                }
+//                }
             });
         };
 
