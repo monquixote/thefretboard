@@ -29,7 +29,7 @@
 			  </a>
 		  </div>
 			<div id="promo-banner">
-		    <a href="/discussion/111802/charitable-sale-and-raffle-100-of-the-proceeds-go-to-two-special-causes" title="" target="_blank">
+		    <a href="/discussion/111802/charitable-sale-and-raffle-100-of-the-proceeds-go-to-two-special-causes/p1" title="" target="_blank">
 			    <img src="/themes/FlatVI/img/thorpy_raffle.png" />
 			  </a>
 			</div>
