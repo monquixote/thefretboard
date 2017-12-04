@@ -28,11 +28,13 @@
   			  <img src="/themes/FlatVI/img/thefb_header_2017_2.png">
 			  </a>
 		  </div>
+		  <!--
 			<div id="promo-banner">
 		    <a href="/discussion/116460/end-of-year-special-challenge" title="" target="_blank">
 			    <img src="/themes/FlatVI/img/2017-10-banner.png" />
 			  </a>
 			</div>
+			-->
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
 			  <div class="nav" id="nav">
