@@ -1163,14 +1163,15 @@ if (!function_exists('forceIPv4')) {
      * @param string $IP The IP address to force.
      * @return string Returns the IPv4 address version of {@link IP}.
      * @since 2.1
+     * LJ: Changed to always return the $IP, regardless of version
      */
     function forceIPv4($IP) {
         if ($IP === '::1') {
             return '127.0.0.1';
         } elseif (strpos($IP, ':') === true) {
-            return '0.0.0.1';
+            return $IP;
         } elseif (strpos($IP, '.') === false) {
-            return '0.0.0.2';
+            return $IP;
         } else {
             return substr($IP, 0, 15);
         }
