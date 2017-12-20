@@ -25,7 +25,6 @@ class UserModel extends Gdn_Model {
     /** Cache key. */
     const USERROLES_KEY = 'user.{UserID}.roles';
 
-    /** Cache key. */
     const USERPERMISSIONS_KEY = 'user.{UserID}.permissions.{PermissionsIncrement}';
 
     /** Cache key. */
@@ -2313,9 +2312,10 @@ class UserModel extends Gdn_Model {
             $Keywords = $Filter;
         }
         $Keywords = trim($Keywords);
-
         // Check for an IP address.
         if (preg_match('`\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}`', $Keywords)) {
+            $IPAddress = $Keywords;
+        } elseif (strpos($Keywords, ":") > 0) {
             $IPAddress = $Keywords;
         } elseif (strtolower($Keywords) == 'banned') {
             $this->SQL->where('u.Banned >', 0);

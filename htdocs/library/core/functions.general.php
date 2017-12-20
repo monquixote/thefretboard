@@ -1166,15 +1166,7 @@ if (!function_exists('forceIPv4')) {
      * LJ: Changed to always return the $IP, regardless of version
      */
     function forceIPv4($IP) {
-        if ($IP === '::1') {
-            return '127.0.0.1';
-        } elseif (strpos($IP, ':') === true) {
-            return $IP;
-        } elseif (strpos($IP, '.') === false) {
-            return $IP;
-        } else {
-            return substr($IP, 0, 30);
-        }
+        return $IP;
     }
 }
 
