@@ -1173,7 +1173,7 @@ if (!function_exists('forceIPv4')) {
         } elseif (strpos($IP, '.') === false) {
             return $IP;
         } else {
-            return substr($IP, 0, 15);
+            return substr($IP, 0, 30);
         }
     }
 }
