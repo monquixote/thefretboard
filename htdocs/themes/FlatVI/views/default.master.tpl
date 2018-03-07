@@ -28,11 +28,13 @@
   			  <img src="/themes/FlatVI/img/thefb_header_2017_2.png">
 			  </a>
 		  </div>
+		  <!--
 			<div id="promo-banner">
 		    <a href="/discussion/118076/the-guitar-show-february-24-25-2018-the-new-bingley-hall-birmingham/p1" title="" target="_blank">
 			    <img src="/themes/FlatVI/img/20171231_guitar_show_4.png" />
 			  </a>
 			</div>
+			-->
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
 			  <div class="nav" id="nav">
