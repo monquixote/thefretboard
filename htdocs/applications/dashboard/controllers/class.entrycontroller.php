@@ -1292,7 +1292,8 @@ EOT;
                 $Values = $this->Form->formValues();
                 $Values = $this->UserModel->filterForm($Values, true);
                 unset($Values['Roles']);
-                $AuthUserID = $this->UserModel->register($Values);
+                $AuthUserID = $this->UserModel->register($Values, array('CheckCaptcha' => false));
+                
                 if (!$AuthUserID) {
                     $this->Form->setValidationResults($this->UserModel->validationResults());
                 } else {
