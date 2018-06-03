@@ -1081,3 +1081,14 @@ div.topBottomArrows { font-size: 0.8em; float: right; margin-top: 0.2em; padding
 .relative {
   position: relative;
 }
+
+.Button.RecentDiscussions {
+  background-color: #79B0C9;
+  color: #FFFFFF !important;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.Button.NewDiscussion {
+  font-weight: bold;
+}
