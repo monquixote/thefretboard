@@ -29,11 +29,9 @@
 			  </a>
 		  </div>
 			<div id="promo-banner">
-			<!--
-		    <a href="/discussion/129280/the-incredible-1000-raffle-away" title="The Incredible £1000 Raffle-away!" target="_blank">
-			    <img src="/themes/FlatVI/img/grand_anniversary_giveaway.png" />
+		    <a href="/discussion/131511/thefbs-5th-birthday-bash-open-for-bookings/p1" title="The Fretboard's 5th birthday party!" target="_blank">
+			    <img src="/themes/FlatVI/img/birthday_party.jpg" />
 			  </a>
-		  -->
 			</div>
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
