@@ -28,11 +28,13 @@
   			  <img src="/themes/FlatVI/img/thefb_header_2017_2.png">
 			  </a>
 		  </div>
+		  <!--
 			<div id="promo-banner">
 		    <a href="/discussion/131511/thefbs-5th-birthday-bash-open-for-bookings/p1" title="The Fretboard's 5th birthday party!" target="_blank">
 			    <img src="/themes/FlatVI/img/birthday_party.jpg" />
 			  </a>
 			</div>
+			-->
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
 			  <div class="nav" id="nav">
