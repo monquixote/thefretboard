@@ -28,13 +28,11 @@
   			  <img src="/themes/FlatVI/img/thefb_header_2017_2.png">
 			  </a>
 		  </div>
-		  <!--
 			<div id="promo-banner">
-		    <a href="/discussion/131511/thefbs-5th-birthday-bash-open-for-bookings/p1" title="The Fretboard's 5th birthday party!" target="_blank">
-			    <img src="/themes/FlatVI/img/birthday_party.jpg" />
+		    <a href="/discussion/141853/we-never-discount-but-we-are-offering-some-discount-for-you-kind-fellows?campaign=thorpy20" title="ThorpyFX Sale!" target="_blank">
+			    <img src="/themes/FlatVI/img/thorpy_banner.png" />
 			  </a>
 			</div>
-			-->
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
 			  <div class="nav" id="nav">
