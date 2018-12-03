@@ -29,9 +29,11 @@
 			  </a>
 		  </div>
 			<div id="promo-banner">
+			<!--
 		    <a href="/discussion/141853/we-never-discount-but-we-are-offering-some-discount-for-you-kind-fellows?campaign=thorpy20" title="ThorpyFX Sale!" target="_blank">
 			    <img src="/themes/FlatVI/img/thorpy_sale_banner.png" />
 			  </a>
+		  -->
 			</div>
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
