@@ -29,11 +29,9 @@
 			  </a>
 		  </div>
 			<div id="promo-banner">
-			<!--
-		    <a href="/discussion/141853/we-never-discount-but-we-are-offering-some-discount-for-you-kind-fellows?campaign=thorpy20" title="ThorpyFX Sale!" target="_blank">
-			    <img src="/themes/FlatVI/img/thorpy_sale_banner.png" />
+		    <a href="http://www.thefretboard.co.uk/discussion/138973/the-guitar-show-2019-23rd-24th-february-the-new-bingley-hall-birmingham" title="The Guitar Show 2019" target="_blank">
+			    <img src="/themes/FlatVI/img/tgs_2019.jpg" />
 			  </a>
-		  -->
 			</div>
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
