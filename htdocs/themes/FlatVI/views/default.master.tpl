@@ -28,11 +28,13 @@
   			  <img src="/themes/FlatVI/img/thefb_header_2017_2.png">
 			  </a>
 		  </div>
+		  <!--
 			<div id="promo-banner">
 		    <a href="http://www.thefretboard.co.uk/discussion/138973/the-guitar-show-2019-23rd-24th-february-the-new-bingley-hall-birmingham" title="The Guitar Show 2019" target="_blank">
 			    <img src="/themes/FlatVI/img/tgs_2019.jpg" />
 			  </a>
 			</div>
+			-->
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
 			  <div class="nav" id="nav">
