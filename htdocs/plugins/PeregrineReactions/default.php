@@ -129,10 +129,10 @@ class PeregrineReactions extends Gdn_Plugin {
                 $reactionid = "3";
                 break;
 # Removed by digitalscream 2013-12-15
-#            case "4":
-#                $reactiontype = "D";
-#                $reactionid = "4";
-#                break;
+            case "4":
+                $reactiontype = "D";
+                $reactionid = "4";
+                break;
         }
 
         if (GetValue(2, $Args) > 0) {
@@ -164,7 +164,7 @@ class PeregrineReactions extends Gdn_Plugin {
                  T("wow")=>$Userinfo->PeregrineReactTwo,
                  T("scholarly")=>$Userinfo->PeregrineReactThree,
 # Removed by digitalscream 2013-12-15
-#                 T("artistic")=> $Userinfo->PeregrineReactFour,
+                 T("artistic")=> $Userinfo->PeregrineReactFour,
                  );
 
         $UserTotReact = array_sum($URarray); 
@@ -207,8 +207,8 @@ class PeregrineReactions extends Gdn_Plugin {
         echo "</td><td>";
         echo Gdn_Format::BigNumber($Userinfo->PeregrineReactThree);
 # Removed by digitalscream 2013-12-15
-#        echo "</td><td>";
-#        echo Gdn_Format::BigNumber($Userinfo->PeregrineReactFour);
+        echo "</td><td>";
+        echo Gdn_Format::BigNumber($Userinfo->PeregrineReactFour);
 
 
         echo "</td>";
@@ -220,8 +220,8 @@ class PeregrineReactions extends Gdn_Plugin {
         echo "</th><th>";
         echo T("scholarly");
 # Removed by digitalscream 2013-12-15
-#        echo "</th><th>";
-#        echo T("artistic");
+        echo "</th><th>";
+        echo T("artistic");
         echo "</th>";
         echo "</tr>";
         echo "</table>";
@@ -253,16 +253,16 @@ class PeregrineReactions extends Gdn_Plugin {
         $React[3] = T("scholarly");
         $TitleReact[3] = T("Click me if you learned something");
 # Removed by digitalscream 2013-12-15
-#        $React[4] = T("artistic");
-#        $TitleReact[4] = T("Click me if your head is in your hands");
+        $React[4] = T("artistic");
+        $TitleReact[4] = T("Click me if your head is in your hands");
 
         $RecordType = $Args['RecordType'];
         $RecordID = $Args['RecordID'];
 
-     //   echo '<div class="Reactions ReactionClass">';
+        echo '<div class="Reactions ReactionClass">';
 
 # digitalscream: Changed limit to < 4 
-        for ($x = 1; $x < 4; $x++) {
+        for ($x = 1; $x <= 4; $x++) {
             if (!isset($CountValues[$x]))
                 $CountValues[$x] = 0;
             echo '<span class="ReactionCount';
@@ -301,7 +301,7 @@ class PeregrineReactions extends Gdn_Plugin {
         $React[2] = T("wow");
         $React[3] = T("scholarly");
 # Removed by digitalscream 2013-12-15
-#        $React[4] = T("artistic");
+        $React[4] = T("artistic");
 
 
         $Reactors = array();

@@ -57,9 +57,9 @@ class PeregrineReactionsModel extends Gdn_Model {
                 $AddColumn = "PeregrineReactThree";
                 break;
 # Removed by digitalscream 2013-12-15
-#            case "4":
-#                $AddColumn = "PeregrineReactFour";
-#                break;
+            case "4":
+                $AddColumn = "PeregrineReactFour";
+                break;
         }
 
 
@@ -84,9 +84,9 @@ class PeregrineReactionsModel extends Gdn_Model {
                 $RemColumn = "PeregrineReactThree";
                 break;
 # Removed by digitalscream 2013-12-15
-#            case "4":
-#                $RemColumn = "PeregrineReactFour";
-#                break;
+            case "4":
+                $RemColumn = "PeregrineReactFour";
+                break;
         }
 
         if (!$Result) {
@@ -132,7 +132,7 @@ public function TimeframePeregrineReactions($MaxRecords, $NumDays) {
                 ->Join('User u', 'pr.UserID = u.UserID')
                 ->Where('pr.DateInserted >=', Gdn_Format::ToDateTime(strtotime("-" . $NumDays . " days")))
                 //Monquixote tweak - removes facepalms from leaderboard
-                ->Where('pr.reactionType <>','4')
+                // ->Where('pr.reactionType <>','4')
                 ->GroupBy('pr.UserID')
                 ->OrderBy('CountUserID', 'desc')
                 ->Limit($MaxRecords) 
