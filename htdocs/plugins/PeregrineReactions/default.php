@@ -259,7 +259,7 @@ class PeregrineReactions extends Gdn_Plugin {
         $RecordType = $Args['RecordType'];
         $RecordID = $Args['RecordID'];
 
-        echo '<div class="Reactions ReactionClass">';
+#         echo '<div class="Reactions ReactionClass">';
 
 # digitalscream: Changed limit to < 4 
         for ($x = 1; $x <= 4; $x++) {
