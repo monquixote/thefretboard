@@ -981,7 +981,9 @@ tbody td.BigCount {
 */
 
 /*digitalscream change 2013-09-03*/
-
+.React-4 {
+  display: none;
+}
 /*end digitalscream change 2013-09-03*/
 
 .ReactionClass {
