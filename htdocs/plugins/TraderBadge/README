@@ -1,0 +1,14 @@
+This is an addon for Vanilla 2.x which will add role badges, similar to how
+RoleTitle ( http://vanillaforums.org/addon/704/roletitle ) works, but
+for CSS-able images.
+
+Note: For 2.0.x "below" is the only setting that will work.
+      For 2.1+ both settings should work.
+
+To override the default images, simply create a CSS class in your theme CSS:
+    span.RoleBadges dictates the default height and width
+    span.<Role>Badge dictates the default role image, e.g. span.MemberBadge
+
+TODO:
+* Add option to show role badges on profile page
+* Update to fully work in 2.0.x and 2.1

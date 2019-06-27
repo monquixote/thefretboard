@@ -1,0 +1,52 @@
+span.TraderBadge {
+	height: 18px;
+	width: 18px;
+	display: inline-block;
+}
+
+span.AdministratorBadge {
+	background: transparent url('images/administrator.gif') no-repeat center center;
+}
+
+span.ModeratorBadge {
+	background: transparent url('images/moderator.gif') no-repeat center center;
+}
+
+span.MemberBadge {
+	background: transparent url('images/member.gif') no-repeat center center;
+}
+
+span.ApplicantBadge {
+
+}
+
+span.ConfirmEmailBadge {
+
+}
+
+span.GuestBadge {
+	background: transparent url('images/guest.gif') no-repeat center center;
+}
+
+span.BannedBadge {
+
+}
+
+span.trader-badge {
+  float: right;
+  margin-top: -0.5em;
+  margin-right: -2em;
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #2a7aaf;
+  border-radius: 10px;
+  padding: 3px 5px;
+}
+
+div.DiscussionMeta span.trader-badge {
+  font-size: 1.4em !important;
+  background-color: #fff !important;
+  color: #2a7aaf !important;
+  margin-right: 0.4em !important;
+  margin-top: -1.2em;
+}
