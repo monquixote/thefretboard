@@ -154,12 +154,19 @@ $Definition['Saved'] = 'Your changes have been saved.';
 $Definition['%s new plural'] = '%s new';
 $Definition['TermsOfService'] = 'Terms of Service';
 $Definition['TermsOfServiceText'] = 
-"You agree, through your use of this service, that you will not use this
+    "You agree, through your use of this service, that you will not use this
 community to post any material which is knowingly false and/or defamatory,
 inaccurate, abusive, vulgar, hateful, harassing, obscene, profane, sexually
 oriented, threatening, invasive of a person's privacy, or otherwise violative
 of any law. You agree not to post any copyrighted material unless the
 copyright is owned by you.
+
+You hereby grant thefretboard.co.uk a perpetual, fully paid-up, worldwide, 
+sublicensable, irrevocable, assignable license to copy, distribute, transmit, 
+publicly display or perform, edit, translate, reformat and otherwise use user 
+content in connection with the operation of the website, services or any other 
+similar or related business, in any medium now existing or later devised, 
+including without limitation in advertising and publicity.
 
 We at this community also reserve the right to reveal your identity (or
 whatever information we know about you) in the event of a complaint or legal
