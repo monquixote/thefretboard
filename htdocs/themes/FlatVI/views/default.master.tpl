@@ -31,7 +31,7 @@
 		  
 			<div id="promo-banner">
 		    <a href="https://www.thefretboard.co.uk/discussion/170283/the-guitar-show-29th-feb-1st-march-2020-new-bingley-hall-birmingham" title="The Guitar Show 2019" target="_blank">
-			    <img src="/themes/FlatVI/img/tgs_2020.jpg" />
+			    <img src="/themes/FlatVI/img/tgs_2020.png" />
 			  </a>
 			</div>
 			
