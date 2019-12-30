@@ -30,8 +30,8 @@
 		  </div>
 		  <!--
 			<div id="promo-banner">
-		    <a href="http://www.thefretboard.co.uk/discussion/138973/the-guitar-show-2019-23rd-24th-february-the-new-bingley-hall-birmingham" title="The Guitar Show 2019" target="_blank">
-			    <img src="/themes/FlatVI/img/tgs_2019.jpg" />
+		    <a href="https://www.thefretboard.co.uk/discussion/170283/the-guitar-show-29th-feb-1st-march-2020-new-bingley-hall-birmingham" title="The Guitar Show 2019" target="_blank">
+			    <img src="/themes/FlatVI/img/tgs_2020.jpg" />
 			  </a>
 			</div>
 			-->
