@@ -3,7 +3,7 @@
 $PluginInfo['TraderBadge'] = array(
    'Name' => 'TraderBadge',
    'Description' => "Adds trader badges to those with the right tFB role.",
-   'Version' => '0.1',
+   'Version' => '0.11',
    'RequiredApplications' => array('Vanilla' => '2.0.18'),
    'RequiredTheme' => FALSE,
    'RequiredPlugins' => FALSE,
@@ -100,7 +100,7 @@ class TraderBadgePlugin extends Gdn_Plugin {
         if( $roleData !== FALSE && $roleData->NumRows(DATASET_TYPE_ARRAY) > 0 )
         $roles = ConsolidateArrayValuesByKey( $roleData->Result(), 'Name' );
         foreach( $roles as $role ) {
-            if( $role == "Trader" ) {
+            if( $role == "Traders Only" ) {
               echo '<span title="Trusted tFB Business Partner" class="trader-badge">tFB Trader</span>';
             };
         }
