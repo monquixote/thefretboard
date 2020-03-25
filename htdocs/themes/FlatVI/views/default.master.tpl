@@ -28,13 +28,11 @@
   			  <img src="/themes/FlatVI/img/thefb_header_2017_2.png">
 			  </a>
 		  </div>
-<!--		  
 			<div id="promo-banner">
-		    <a href="https://www.thefretboard.co.uk/discussion/170283/the-guitar-show-29th-feb-1st-march-2020-new-bingley-hall-birmingham" title="The Guitar Show 2019" target="_blank">
-			    <img src="/themes/FlatVI/img/tgs_2020.png" />
+		    <a href="https://www.thefretboard.co.uk/discussion/176447/sticky-call-a-fretboard-friend-now-set-up-details-in-thread/p1" title="tFB's virtual pub" target="_blank">
+			    <img src="/themes/FlatVI/img/virus_banner_scaled.png" />
 			  </a>
 			</div>
--->			
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
 			  <div class="nav" id="nav">
