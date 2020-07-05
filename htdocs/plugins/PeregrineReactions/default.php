@@ -261,7 +261,7 @@ class PeregrineReactions extends Gdn_Plugin {
 
 	    $PeregrineReactionsModel = new PeregrineReactionsModel();
         $ReactionResult = $PeregrineReactionsModel->GetReactions(ucfirst($RecordType), $RecordID);
-	    $ReactionLogs = ["", "LOLs:", "Wows:", "Wisdoms:", "Facepalms:"];
+	    $ReactionLogs = array("", "LOLs:", "Wows:", "Wisdoms:", "Facepalms:");
 	    
 	    foreach ($ReactionResult as $Reaction) {
 		    $ReactorID = $Reaction['InsertUserID'];
