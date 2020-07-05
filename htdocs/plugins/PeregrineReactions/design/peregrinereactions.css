@@ -55,6 +55,7 @@ height: 35px; !important
 
 .Reactions {
 margin-top: 5px;
+text-align: left;
 }
 
 
@@ -142,6 +143,14 @@ HotButton.Handle,
    padding: 3px;
    padding-left: 5px;
    min-width: 55px;
+}
+
+.ReactantWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  max-width: 50%;
+  text-align: left;
 }
 
 span.afterperegrinereaction {

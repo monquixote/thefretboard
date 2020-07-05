@@ -5,7 +5,7 @@
 $PluginInfo['PeregrineReactions'] = array(
     'Name' => 'Peregrine Reactions - Monquixote Edition',
     'Description' => "Peregrine Reactions - Monquixote edition tweaked by the Cat with a Banjo ",
-    'Version' => '2.3',
+    'Version' => '2.4',
     'RequiredApplications' => array('Vanilla' => '2.1a'),
     'RequiredTheme' => FALSE,
     'RequiredPlugins' => FALSE,
@@ -259,6 +259,22 @@ class PeregrineReactions extends Gdn_Plugin {
         $RecordType = $Args['RecordType'];
         $RecordID = $Args['RecordID'];
 
+	    $PeregrineReactionsModel = new PeregrineReactionsModel();
+        $ReactionResult = $PeregrineReactionsModel->GetReactions(ucfirst($RecordType), $RecordID);
+	    $ReactionLogs = ["", "LOLs:", "Wows:", "Wisdoms:", "Facepalms:"];
+	    
+	    foreach ($ReactionResult as $Reaction) {
+		    $ReactorID = $Reaction['InsertUserID'];
+		    $ReactorDateArr[$ReactorID] = Gdn_Format::DateFull($Reaction['DateInserted']);
+		    $ReactionTypeArr[$ReactorID] = $Reaction['ReactionType'];
+		    $Reactor = Gdn::UserModel()->GetID($ReactorID);
+            $ReactorName = GetValue('Name', $Reactor);
+            $ReactorDate = Gdn_Format::DateFull($Reaction['DateInserted']);;
+            $ReactionType = $Reaction['ReactionType'];
+		    $ReactionLogs[$ReactionType] .= "\n" . $ReactorName . " (" . $ReactorDate . ")";
+	    }
+        
+
 #         echo '<div class="Reactions ReactionClass">';
 
 # digitalscream: Changed limit to < 4 
@@ -269,13 +285,14 @@ class PeregrineReactions extends Gdn_Plugin {
             if ($CountValues[0] == $x) {
                 echo " MyReactClick";
             }
-            echo '">' . $CountValues[$x];
+            $LogTitle = $React[$x] == 0 ? "" : $ReactionLogs[$x];
+            echo '" title="' . $ReactionLogs[$x] . '">' . $CountValues[$x];
 
             echo '</span>';
 
             $Image = Img("plugins/PeregrineReactions/design/images/ClickReaction-" . $x . ".png", array('alt' => 'reaction image', 'class' => "ProfilePhotoSmall"));
 //Monquixote changes
-            echo '<span class="PeregrineClick React-' . $x . '"  <a href="index.php?p=/discussion/peregrinereactions/' . "$RecordType/$x/$RecordID" . '" title="' . "xx" . $TitleReact[$x] . '" rel="nofollow">' . $Image . " " . $React[$x] . ' </a></span>';
+            echo '<span class="PeregrineClick React-' . $x . '"  <a href="index.php?p=/discussion/peregrinereactions/' . "$RecordType/$x/$RecordID" . '" title="' . $TitleReact[$x] . '" rel="nofollow">' . $Image . " " . $React[$x] . ' </a></span>';
         }
         echo '<span class="afterperegrinereaction"> </span>';
     }
@@ -325,26 +342,29 @@ class PeregrineReactions extends Gdn_Plugin {
             $Sender->MyReactionCountData = array();
             $Sender->MyReactionCountData = $CountValues;
             $Sender->MyReactionCountData[0] = $myreaction;
+/*
+            echo '<div class="ReactantWrapper">';
             foreach ($Reactors as $val) {
                 $Reactor = Gdn::UserModel()->GetID($val);
                 $Reactorname = GetValue('Name', $Reactor);
                 $ReactorDate = $ReactorDateArr[$val];
                 $ReactionType = $ReactionTypeArr[$val];
-/*
-                $photo = UserPhoto($Reactor, array('ImageClass' => 'ProfilePhotoCircle', 'Title' => sprintf(T('%1$s reacted %2$s on %3$s'), $Reactorname, $React[$ReactionType], $ReactorDate)));
+
+                $photo = UserPhoto($Reactor, array('ImageClass' => 'ProfilePhotoCircle', 'Title' => sprintf(T('%1$s: %2$s (%3$s)'), $Reactorname, $React[$ReactionType], $ReactorDate)));
                 echo '<span class="ReactantWrap">';
                 if ($photo) {
                     echo $photo;
                     echo '</span>';
-                    echo '<span class="RImage-' . $ReactionType . '"> </span>';
                 } else {
 
                     echo Wrap(UserAnchor($Reactor), 'span', array('Title' => " \"$React[$ReactionType]\"  $Reactorname  ($ReactorDate)"));
                     echo '<span class="RImageName-' . $ReactionType . '"> </span>';
                 }
                 echo '</span>'; // end ReactantWrap span
-*/
+
             }
+            echo '</div>'; // end ReactantWrapper span
+*/
         } // end if isarray
     }
 
