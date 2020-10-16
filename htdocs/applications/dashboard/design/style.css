@@ -5251,7 +5251,7 @@ body.embed .InformMessages {
 }
 
 .SpEditProfile {
-    background-image: url("images/sprites-14-000000.png");
+    background-image: url("/themes/FlatVI/img/sprites-14-000.png");
     background-position: -245px -29px;
 }
 
@@ -5273,7 +5273,7 @@ body.embed .InformMessages {
     *margin-right: .3em;
     line-height: 18px;
     vertical-align: top;
-    background-image: url("images/sprites-14-000000.png");
+    background-image: url("/themes/FlatVI/img/sprites-14-000.png");
     background-position: 16px 16px;
     background-repeat: no-repeat;
 }
@@ -5393,12 +5393,12 @@ input + .ReactSprite {
 /* Switch to the white icons when hovering over a menuitem sprite */
 .MenuItems a:hover .ReactSprite,
 .MenuItems a:hover .Sprite {
-    background-image: url('http://cdn.vanillaforums.com/images/sprites-14-fff.png');
+    background-image: url('/themes/FlatVI/img/sprites-14-fff.png');
 }
 
 /* Switch to bordered icons for user reaction overlays */
 .UserReactionWrap .ReactSprite {
-    background-image: url('http://cdn.vanillaforums.com/images/sprites-14-000-bordered.png');
+    background-image: url('/themes/FlatVI/img/sprites-14-000-bordered.png');
 }
 
 .ActionBlock {
@@ -5420,7 +5420,7 @@ input + .ReactSprite {
 }
 
 .Video.YouTube .VideoPreview:after {
-    background: url('http://cdn.vanillaforums.com/images/youtube-overlay-button.png') 0 -44px no-repeat transparent;
+    background: url('/themes/FlatVI/img/youtube-overlay-button.png') 0 -44px no-repeat transparent;
     position: absolute;
     display: block;
     content: '';
