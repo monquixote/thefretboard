@@ -29,8 +29,8 @@
 			  </a>
 		  </div>
 			<div id="promo-banner">
-		    <a href="https://www.thefretboard.co.uk/discussion/176447/sticky-call-a-fretboard-friend-now-set-up-details-in-thread/p1" title="tFB's virtual pub" target="_blank">
-			    <img src="/themes/FlatVI/img/virus_banner_scaled.png" />
+		    <a href="https://www.thefretboard.co.uk/discussion/195275/black-friday-sale-pmt-10-off" title="PMT Black Friday Offer" target="_blank">
+			    <img src="/themes/FlatVI/img/pmt_black_friday.jpg" />
 			  </a>
 			</div>
 			<div class="BreadcrumbsWrapper">
