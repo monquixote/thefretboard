@@ -28,11 +28,13 @@
   			  <img src="/themes/FlatVI/img/thefb_header_2017_2.png">
 			  </a>
 		  </div>
+		  <!--
 			<div id="promo-banner">
-		    <a href="https://www.thefretboard.co.uk/discussion/195275/black-friday-sale-pmt-10-off" title="PMT Black Friday Offer" target="_blank">
-			    <img src="/themes/FlatVI/img/pmt_black_friday.jpg" />
+		      <a href="urlhere" title="title" target="_blank">
+			    <img src="srchere" />
 			  </a>
 			</div>
+		  -->
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
 			  <div class="nav" id="nav">
