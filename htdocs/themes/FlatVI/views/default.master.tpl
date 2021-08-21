@@ -28,13 +28,11 @@
   			  <img src="/themes/FlatVI/img/thefb_header_2017_2.png">
 			  </a>
 		  </div>
-		  <!--
 			<div id="promo-banner">
-		      <a href="urlhere" title="title" target="_blank">
-			    <img src="srchere" />
+		      <a href="https://www.thefretboard.co.uk/discussion/210757/" title="Trent Guitars" target="_blank">
+			    <img src="/themes/FlatVI/img/trent_banner_2.png" />
 			  </a>
 			</div>
-		  -->
 			<div class="BreadcrumbsWrapper">
 			  {breadcrumbs}
 			  <div class="nav" id="nav">
