@@ -841,7 +841,7 @@ jQuery(document).ready(function($) {
 
         if (gdn.definition('TickExtra', null) != null)
             SendData.TickExtra = gdn.definition('TickExtra');
-
+/*
         jQuery.ajax({
             dataType: 'json',
             type: 'post',
@@ -851,6 +851,7 @@ jQuery(document).ready(function($) {
                 gdn.inform(json);
             }
         });
+*/
     }
 
     // Ping back to the deployment server to track views, and trigger

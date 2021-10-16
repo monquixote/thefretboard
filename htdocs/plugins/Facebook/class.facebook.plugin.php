@@ -275,7 +275,7 @@ class FacebookPlugin extends Gdn_Plugin {
             $CssClass = 'ReactButton PopupWindow';
         }
 
-        echo ' '.anchor(sprite('ReactFacebook', 'Sprite ReactSprite', t('Share on Facebook')), url("post/facebook/{$Args['RecordType']}?id={$Args['RecordID']}", true), $CssClass).' ';
+//        echo ' '.anchor(sprite('ReactFacebook', 'Sprite ReactSprite', t('Share on Facebook')), url("post/facebook/{$Args['RecordType']}?id={$Args['RecordID']}", true), $CssClass).' ';
     }
 
     /**

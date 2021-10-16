@@ -905,10 +905,10 @@ class TwitterPlugin extends Gdn_Plugin {
      */
     protected function addReactButton($Sender, $Args) {
         if ($this->accessToken()) {
-            $Url = url("post/twitter/{$Args['RecordType']}?id={$Args['RecordID']}", true);
+            $Url = ""; //url("post/twitter/{$Args['RecordType']}?id={$Args['RecordID']}", true);
             $CssClass = 'ReactButton Hijack';
         } else {
-            $Url = url("post/twitter/{$Args['RecordType']}?id={$Args['RecordID']}", true);
+            $Url = ""; //url("post/twitter/{$Args['RecordType']}?id={$Args['RecordID']}", true);
             $CssClass = 'ReactButton PopupWindow';
         }
 
