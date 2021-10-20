@@ -1677,7 +1677,9 @@ class Gdn_Controller extends Gdn_Pluggable {
                 $ETag = AssetModel::eTag();
                 $CombineAssets = c('Garden.CombineAssets');
                 $ThemeType = isMobile() ? 'mobile' : 'desktop';
-
+                if (!Gdn::session()->isValid()) {
+                    $this->Head->addTag('script', array("src" => 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', 'type' => 'text/javascript', "data-ad-client" => "ca-pub-9953112108229165", "async" => "true"));
+                }
                 // And now search for/add all css files.
                 foreach ($this->_CssFiles as $CssInfo) {
                     $CssFile = $CssInfo['FileName'];
