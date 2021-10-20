@@ -1090,3 +1090,8 @@ div.topBottomArrows { font-size: 0.8em; float: right; margin-top: 0.2em; padding
 .Button.NewDiscussion {
   font-weight: bold;
 }
+
+ins.adsbygoogle {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
