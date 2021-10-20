@@ -54,10 +54,10 @@
 							data-ad-slot="5913486945"
 							data-ad-format="auto"
 							data-full-width-responsive="true"></ins>
-				{/literal}
 					<script>
 							(adsbygoogle = window.adsbygoogle || []).push({});
 					</script>
+				{/literal}
 			</div>
 			<div class="Column ContentColumn" id="Content">
 				{literal}
