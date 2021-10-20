@@ -52,20 +52,21 @@
 							style="display:inline-block;width:876px;height:120px"
 							data-ad-client="ca-pub-9953112108229165"
 							data-ad-slot="3089202424"></ins>
+					<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
 				{/literal}
 			</div>
 			<div class="Column ContentColumn" id="Content">
 				{literal}
 					<!-- Pre-content Horizontal -->
+					<!-- Vertical Sidebar -->
 					<ins class="adsbygoogle"
 							style="display:block"
 							data-ad-client="ca-pub-9953112108229165"
-							data-ad-slot="3089202424"
+							data-ad-slot="5913486945"
 							data-ad-format="auto"
 							data-full-width-responsive="true"></ins>
-					<script>
-							(adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
 				{/literal}
 				{asset name="Content"}
 			</div>
