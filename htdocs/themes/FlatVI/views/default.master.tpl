@@ -46,8 +46,29 @@
 			<div class="Column PanelColumn" id="Panel">
 				{module name="MeModule"}
 				{asset name="Panel"}
+				{literal}
+					<!-- Pre-content Horizontal -->
+					<ins class="adsbygoogle"
+							style="display:inline-block;width:876px;height:120px"
+							data-ad-client="ca-pub-9953112108229165"
+							data-ad-slot="3089202424"></ins>
+				{/literal}
 			</div>
-			<div class="Column ContentColumn" id="Content">{asset name="Content"}</div>
+			<div class="Column ContentColumn" id="Content">
+				{literal}
+					<!-- Pre-content Horizontal -->
+					<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-9953112108229165"
+							data-ad-slot="3089202424"
+							data-ad-format="auto"
+							data-full-width-responsive="true"></ins>
+					<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				{/literal}
+				{asset name="Content"}
+			</div>
 			<div class="clear" style="height: 0.7em;"></div>
 		</div>
 	</div>
