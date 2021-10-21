@@ -492,3 +492,14 @@ td.BigCount {
 .CountItemWrap {
     width: auto; /* Keep counts from being mushed together */
 }
+
+
+ins.adsbygoogle {
+	max-height: 120px !important;
+	margin: 5px 0px;
+    width: 100%;
+}
+
+ins.post-content {
+    margin-top: 20px;
+}

@@ -12,7 +12,7 @@
 $ThemeInfo['mobile'] = array(
     'Name' => 'Mobile 2012',
     'Description' => "A simplified theme made to target mobile browsers.",
-    'Version' => '1.1.4',
+    'Version' => '1.1.6',
     'Author' => "Mark O'Sullivan",
     'AuthorEmail' => 'mark@vanillaforums.com',
     'AuthorUrl' => 'http://vanillaforums.com',

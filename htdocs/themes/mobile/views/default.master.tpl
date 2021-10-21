@@ -25,7 +25,27 @@
             {breadcrumbs homelink="0"}
         </div>
         <div id="Content">
+            {literal}
+                <!-- Pre-content mobile -->
+                <ins class="adsbygoogle pre-content"
+                    style="display:inline-block;width:100%;min-width:100%;min-height:50px;max-height:120px !important;"
+                    data-ad-client="ca-pub-9953112108229165"
+                    data-ad-slot="8589543752"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            {/literal}
             {asset name="Content"}
+            {literal}
+                <!-- Pre-content mobile -->
+                <ins class="adsbygoogle post-content"
+                    style="display:inline-block;width:100%;min-width:100%;min-height:50px;max-height:120px !important;"
+                    data-ad-client="ca-pub-9953112108229165"
+                    data-ad-slot="3935982878"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            {/literal}
         </div>
     </div>
     <div id="Foot">
