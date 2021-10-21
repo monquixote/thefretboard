@@ -4,6 +4,7 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
 {asset name="Head"}
 {literal}
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {/literal}
 {literal}
@@ -63,7 +64,7 @@
 				{literal}
 					<!-- Pre-content Horizontal -->
 					<ins class="adsbygoogle"
-							style="display:inline-block;width:876px;height:120px"
+							style="display:inline-block;width:100%;min-height:120px;max-height:200px;"
 							data-ad-client="ca-pub-9953112108229165"
 							data-ad-slot="3089202424"></ins>
 					<script>
