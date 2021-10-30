@@ -1677,7 +1677,7 @@ class Gdn_Controller extends Gdn_Pluggable {
                 $ETag = AssetModel::eTag();
                 $CombineAssets = c('Garden.CombineAssets');
                 $ThemeType = isMobile() ? 'mobile' : 'desktop';
-                if (!Gdn::session()->isValid()) {
+                if (!Gdn::session()->isValid() || 1 == 1) {
                     $this->Head->addTag('script', array("src" => 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', 'type' => 'text/javascript', "data-ad-client" => "ca-pub-9953112108229165", "async" => "true"));
                 } else {
                     $this->Head->addTag('link', array('rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'all', 'href' => '/themes/FlatVI/design/custom_noads.css'));

@@ -29,8 +29,8 @@
 			  </a>
 		  </div>
 			<div id="promo-banner">
-		      <a href="https://www.thefretboard.co.uk/discussion/210757/" title="Trent Guitars" target="_blank">
-			    <img src="/themes/FlatVI/img/trent_banner_2.png" />
+		      <a href="https://www.thefretboard.co.uk/discussion/216258/feline-special-offer-nov-dec-2021-10-off-labour-charges-for-fretboard-members" title="Feline Guitars Promo" target="_blank">
+			    <img src="/themes/FlatVI/img/feline_oct_21.jpg" />
 			  </a>
 			</div>
 			<div class="BreadcrumbsWrapper">
@@ -47,18 +47,6 @@
 			<div class="Column PanelColumn" id="Panel">
 				{module name="MeModule"}
 				{asset name="Panel"}
-				{literal}
-					<!-- Vertical Sidebar -->
-					<ins class="adsbygoogle"
-							style="display:block"
-							data-ad-client="ca-pub-9953112108229165"
-							data-ad-slot="5913486945"
-							data-ad-format="auto"
-							data-full-width-responsive="true"></ins>
-					<script>
-							(adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
-				{/literal}
 			</div>
 			<div class="Column ContentColumn" id="Content">
 				{literal}
@@ -72,6 +60,16 @@
 					</script>
 				{/literal}
 				{asset name="Content"}
+				{literal}
+					<!-- Pre-content Horizontal -->
+					<ins class="adsbygoogle"
+							style="display:inline-block;width:100%;min-height:120px;max-height:200px;"
+							data-ad-client="ca-pub-9953112108229165"
+							data-ad-slot="3421256797"></ins>
+					<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				{/literal}
 			</div>
 			<div class="clear" style="height: 0.7em;"></div>
 		</div>
